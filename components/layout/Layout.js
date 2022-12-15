@@ -42,10 +42,15 @@ const LayoutContainer = ({ children }) => {
         className="site-layout-background"
         style={{ padding: '0px 24px', backgroundColor: '#fff' }}
       >
-        <div className="justify-between items-center">
-          <MenuOutlined className="hideOnDesktop" />
-          <span className="hideOnDesktop">Dev Web Tool</span>
-          <span align='right'>Dark mode</span>
+        <div align='right' className="hideOnMobile">
+          Dark mode
+        </div>
+        <div className="hideOnDesktop">
+          <div className="justify-between items-center">
+            <MenuOutlined />
+            <span className={styles.header_layout}>Dev Web Tool</span>
+            <span>Dark mode</span>
+          </div>
         </div>
       </Layout.Header>
       <Layout.Content
