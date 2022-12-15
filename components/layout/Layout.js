@@ -25,7 +25,6 @@ const LayoutContainer = ({ children }) => {
       <Layout.Header
         style={{
           padding: 0,
-          // background: '#f0f',
           background: '#fff'
         }}
       />
@@ -49,7 +48,10 @@ const LayoutContainer = ({ children }) => {
           textAlign: 'center',
         }}
       >
-        <p>Dev Web Tool ©2018 Created by <Link href={'https://github.com/EavOutDom'}>Eav Outdom</Link></p>
+        <p>Dev Web Tool ©2022 Created by <Link href={'https://github.com/EavOutDom'} target='_blank'>
+          <strong style={{ color: '#0070f3' }}>Eav Outdom</strong>
+        </Link>
+        </p>
       </Layout.Footer>
     </Layout>
   </Layout>);
