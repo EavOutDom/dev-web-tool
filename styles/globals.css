@@ -24,3 +24,33 @@ a {
     background: black;
   }
 } */
+
+.hideOnMobile {
+  display: none;
+}
+
+@media only screen and (min-width: 768px) {
+  .hideOnMobile {
+    display: block;
+  }
+}
+
+.hideOnDesktop {
+  display: block;
+}
+@media only screen and (min-width: 768px) {
+  .hideOnDesktop {
+    display: none;
+  }
+}
+
+
+.justify-between {
+  display: flex;
+  justify-content: space-between;
+}
+
+.items-center {
+  display: flex;
+  align-items: center;
+}

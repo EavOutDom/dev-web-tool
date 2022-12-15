@@ -1,33 +1,53 @@
-import { Layout, Menu } from "antd";
+import { Col, Drawer, Layout, Menu, Row } from "antd";
 import Link from "next/link";
+import React, { useState } from "react";
+import styles from './Layout.module.css';
+import { MenuOutlined } from '@ant-design/icons'
 
 const LayoutContainer = ({ children }) => {
-  return (<Layout>
-    <Layout.Sider
-      breakpoint="lg"
-      collapsedWidth="0"
-      onBreakpoint={(broken) => {
-        console.log(broken);
-      }}
-      onCollapse={(collapsed, type) => {
-        console.log(collapsed, type);
-      }}
-    >
-      <div className="logo" />
-      <Menu
-        theme="dark"
-        mode="inline"
-        defaultSelectedKeys={['4']}
+  const [isToggled, setToggled] = useState(false);
+  const onToggle = () => setToggled(!isToggled);
+  const onClose = () => {
+    setToggled(false);
+  };
 
-      />
+  return (<Layout>
+
+    {/* drawer for mobile  */}
+    <Drawer
+      title="Dev Web Tool"
+      placement='left'
+      onClose={onClose}
+      open={isToggled}
+    >
+      <p>Some contents...</p>
+      <p>Some contents...</p>
+      <p>Some contents...</p>
+    </Drawer>
+
+    {/* sider for desktop*/}
+    <Layout.Sider
+      className="hideOnMobile"
+      width={250}
+    >
+      <div align='middle' className={styles.siderHeader}>Dev Web Tool</div>
+
     </Layout.Sider>
-    <Layout>
+
+    {/* layout  */}
+    <Layout className="site-layout">
+
+      {/* header  */}
       <Layout.Header
-        style={{
-          padding: 0,
-          background: '#fff'
-        }}
-      />
+        className="site-layout-background"
+        style={{ padding: '0px 24px', backgroundColor: '#fff' }}
+      >
+        <div className="justify-between items-center">
+          <MenuOutlined className="hideOnDesktop" />
+          <span className="hideOnDesktop">Dev Web Tool</span>
+          <span align='right'>Dark mode</span>
+        </div>
+      </Layout.Header>
       <Layout.Content
         style={{
           margin: '24px 16px 0',
