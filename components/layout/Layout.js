@@ -2,11 +2,10 @@ import { Col, Drawer, Layout, Menu, Row } from "antd";
 import Link from "next/link";
 import React, { useState } from "react";
 import styles from './Layout.module.css';
-import { MenuOutlined } from '@ant-design/icons'
+import { AppstoreOutlined, MailOutlined, MenuOutlined, SettingOutlined } from '@ant-design/icons'
 
 const LayoutContainer = ({ children }) => {
   const [isToggled, setToggled] = useState(false);
-  const onToggle = () => setToggled(!isToggled);
   const onClose = () => {
     setToggled(false);
   };
@@ -19,19 +18,20 @@ const LayoutContainer = ({ children }) => {
       placement='left'
       onClose={onClose}
       open={isToggled}
+      width='65%'
+      bodyStyle={{ padding: 0 }}
     >
-      <p>Some contents...</p>
-      <p>Some contents...</p>
-      <p>Some contents...</p>
+      <MenuLayout />
     </Drawer>
 
     {/* sider for desktop*/}
     <Layout.Sider
       className="hideOnMobile"
+      theme="light"
       width={250}
     >
       <div align='middle' className={styles.siderHeader}>Dev Web Tool</div>
-
+      <MenuLayout />
     </Layout.Sider>
 
     {/* layout  */}
@@ -47,7 +47,7 @@ const LayoutContainer = ({ children }) => {
         </div>
         <div className="hideOnDesktop">
           <div className="justify-between items-center">
-            <MenuOutlined />
+            <span onClick={() => setToggled(true)} style={{ cursor: 'pointer' }}><MenuOutlined /></span>
             <span className={styles.header_layout}>Dev Web Tool</span>
             <span>Dark mode</span>
           </div>
@@ -82,4 +82,37 @@ const LayoutContainer = ({ children }) => {
   </Layout>);
 }
 
+const MenuLayout = () => {
+  function getItem(label, key, children, type) {
+    return {
+      key,
+      children,
+      label,
+      type,
+    };
+  }
+  const items = [
+    getItem('CSS', 'sub1', [
+      getItem('Item 1', 'g1', [getItem('Checkbox & Radio Button', '1'), getItem('Option 2', '2')], 'group'),
+      getItem('Item 2', 'g2', [getItem('Option 3', '3'), getItem('Option 4', '4')], 'group'),
+    ]),
+    getItem('HTML', 'sub1', [
+      getItem('Item 1', 'g1', [getItem('Option 1', '1'), getItem('Option 2', '2')], 'group'),
+      getItem('Item 2', 'g2', [getItem('Option 3', '3'), getItem('Option 4', '4')], 'group'),
+    ]),
+  ];
+  const onClick = (e) => {
+    console.log('click ', e);
+  };
+  return <Menu
+    onClick={onClick}
+    style={{
+      width: '100%',
+    }}
+    defaultSelectedKeys={['sub1']}
+    defaultOpenKeys={['sub1']}
+    mode="inline"
+    items={items}
+  />
+};
 export default LayoutContainer;
