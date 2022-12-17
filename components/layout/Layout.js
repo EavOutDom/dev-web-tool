@@ -2,7 +2,8 @@ import { Col, Drawer, Layout, Menu, Row } from "antd";
 import Link from "next/link";
 import React, { useState } from "react";
 import styles from './Layout.module.css';
-import { AppstoreOutlined, MailOutlined, MenuOutlined, SettingOutlined } from '@ant-design/icons'
+import { MenuOutlined } from '@ant-design/icons'
+import { useRouter } from "next/router";
 
 const LayoutContainer = ({ children }) => {
   const [isToggled, setToggled] = useState(false);
@@ -10,7 +11,7 @@ const LayoutContainer = ({ children }) => {
     setToggled(false);
   };
 
-  return (<Layout>
+  return (<Layout style={{ minHeight: '100vh' }}>
 
     {/* drawer for mobile  */}
     <Drawer
@@ -21,7 +22,7 @@ const LayoutContainer = ({ children }) => {
       width='65%'
       bodyStyle={{ padding: 0 }}
     >
-      <MenuLayout />
+      <MenuLayout setToggled={setToggled} />
     </Drawer>
 
     {/* sider for desktop*/}
@@ -30,8 +31,10 @@ const LayoutContainer = ({ children }) => {
       theme="light"
       width={250}
     >
-      <div align='middle' className={styles.siderHeader}>Dev Web Tool</div>
-      <MenuLayout />
+      <Link href='/' legacyBehavior>
+        <div align='middle' className={styles.siderHeader}>Dev Web Tool</div>
+      </Link>
+      <MenuLayout setToggled={setToggled} />
     </Layout.Sider>
 
     {/* layout  */}
@@ -48,7 +51,9 @@ const LayoutContainer = ({ children }) => {
         <div className="hideOnDesktop">
           <div className="justify-between items-center">
             <span onClick={() => setToggled(true)} style={{ cursor: 'pointer' }}><MenuOutlined /></span>
-            <span className={styles.header_layout}>Dev Web Tool</span>
+            <Link href='/' legacyBehavior>
+              <span className={styles.header_layout}>Dev Web Tool</span>
+            </Link>
             <span>Dark mode</span>
           </div>
         </div>
@@ -82,7 +87,21 @@ const LayoutContainer = ({ children }) => {
   </Layout>);
 }
 
-const MenuLayout = () => {
+const MenuLayout = (props) => {
+  const router = useRouter();
+  const { tool } = router.query;
+  const asPathWithoutQuery = router.asPath.split('/')[1];
+  const [openKeys, setOpenKeys] = useState([asPathWithoutQuery]);
+
+  const onOpenChange = (keys) => {
+    const latestOpenKey = keys.find((key) => openKeys.indexOf(key) === -1);
+    if (['css', 'html'].indexOf(latestOpenKey) === -1) {
+      setOpenKeys(keys);
+    } else {
+      setOpenKeys(latestOpenKey ? [latestOpenKey] : []);
+    }
+  };
+
   function getItem(label, key, children, type) {
     return {
       key,
@@ -92,25 +111,32 @@ const MenuLayout = () => {
     };
   }
   const items = [
-    getItem('CSS', 'sub1', [
-      getItem('Item 1', 'g1', [getItem('Checkbox & Radio Button', '1'), getItem('Option 2', '2')], 'group'),
-      getItem('Item 2', 'g2', [getItem('Option 3', '3'), getItem('Option 4', '4')], 'group'),
+    getItem('CSS', 'css', [
+      getItem('Animations', 'animations', [getItem('Keyframe Animation', 'keyframe-animation')], 'group'),
+      getItem('Backgrounds', 'backgrounds', [getItem('Background Color', 'background-color'), getItem('Background Gradient', 'background-gradient'), getItem('Background Image', 'background-image')], 'group'),
+      getItem('Box', 'box', [getItem('Border', 'border'), getItem('Border Image', 'border-image'), getItem('Border Radius', 'border-radius'), getItem('Box Shadow', 'box-shadow'), getItem('Opacity', 'opacity'), getItem('Outline', 'outline'), getItem('Overflow', 'overflow')], 'group'),
+      getItem('Color', 'color', [getItem('Text Color', 'text-color')], 'group'),
     ]),
-    getItem('HTML', 'sub1', [
+    getItem('HTML', 'html', [
       getItem('Item 1', 'g1', [getItem('Option 1', '1'), getItem('Option 2', '2')], 'group'),
       getItem('Item 2', 'g2', [getItem('Option 3', '3'), getItem('Option 4', '4')], 'group'),
     ]),
   ];
+
   const onClick = (e) => {
-    console.log('click ', e);
+    props.setToggled(false);
+    router.push(`/${e.keyPath[1]}/${e.keyPath[0]}`);
   };
+
   return <Menu
     onClick={onClick}
     style={{
       width: '100%',
     }}
-    defaultSelectedKeys={['sub1']}
-    defaultOpenKeys={['sub1']}
+    className='scroll_height'
+    selectedKeys={[tool]}
+    openKeys={openKeys}
+    onOpenChange={onOpenChange}
     mode="inline"
     items={items}
   />
