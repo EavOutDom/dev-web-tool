@@ -1,4 +1,4 @@
-import { Col, Drawer, Layout, Menu, Row } from "antd";
+import { Breadcrumb, Col, Drawer, Layout, Menu, Row } from "antd";
 import Link from "next/link";
 import React, { useState } from "react";
 import styles from './Layout.module.css';
@@ -6,10 +6,18 @@ import { MenuOutlined } from '@ant-design/icons'
 import { useRouter } from "next/router";
 
 const LayoutContainer = ({ children }) => {
+  const router = useRouter();
   const [isToggled, setToggled] = useState(false);
   const onClose = () => {
     setToggled(false);
   };
+
+  const path = router.asPath.split("/").filter(v => v.length > 0);;
+  const crumbList = path.map((subpath, idx) => {
+    const href = "/" + path.slice(0, idx + 1).join("/");
+    const title = subpath;
+    return { href, title };
+  });
 
   return (<Layout style={{ minHeight: '100vh' }}>
 
@@ -42,11 +50,31 @@ const LayoutContainer = ({ children }) => {
 
       {/* header  */}
       <Layout.Header
-        className="site-layout-background"
+
         style={{ padding: '0px 24px', backgroundColor: '#fff' }}
       >
-        <div align='right' className="hideOnMobile">
-          Dark mode
+        {/* Desktop  */}
+        <div className='justify-between items-center'>
+          <Breadcrumb
+            style={{
+              backgroundColor: 'transparent !important'
+            }}
+            className='hideOnMobile'
+          >
+            <Breadcrumb.Item>
+              <Link href='/' legacyBehavior>
+                Home
+              </Link>
+            </Breadcrumb.Item>
+            {crumbList.map((item, idx) => (
+              <Breadcrumb.Item key={idx}>
+                <Link href={item.href}>{item.title}</Link>
+              </Breadcrumb.Item>
+            ))}
+          </Breadcrumb>
+          <div align='right' className="hideOnMobile">
+            Dark mode
+          </div>
         </div>
         <div className="hideOnDesktop">
           <div className="justify-between items-center">
@@ -58,16 +86,35 @@ const LayoutContainer = ({ children }) => {
           </div>
         </div>
       </Layout.Header>
+
+      {/* mobile */}
+      <Breadcrumb
+        style={{
+          margin: '16px 24px -8px',
+        }}
+        className='hideOnDesktop'
+      >
+        <Breadcrumb.Item>
+          <Link href='/' legacyBehavior>
+            Home
+          </Link>
+        </Breadcrumb.Item>
+        {crumbList.map((item, idx) => (
+          <Breadcrumb.Item key={idx}>
+            <Link href={item.href}>{item.title}</Link>
+          </Breadcrumb.Item>
+        ))}
+      </Breadcrumb>
       <Layout.Content
         style={{
-          margin: '24px 16px 0',
+          margin: '24px 16px',
         }}
       >
         <div
           style={{
             padding: 24,
             minHeight: 360,
-            background: '#ffF',
+            background: '#fff',
           }}
         >
           {children}
@@ -116,6 +163,7 @@ const MenuLayout = (props) => {
       getItem('Backgrounds', 'backgrounds', [getItem('Background Color', 'background-color'), getItem('Background Gradient', 'background-gradient'), getItem('Background Image', 'background-image')], 'group'),
       getItem('Box', 'box', [getItem('Border', 'border'), getItem('Border Image', 'border-image'), getItem('Border Radius', 'border-radius'), getItem('Box Shadow', 'box-shadow'), getItem('Opacity', 'opacity'), getItem('Outline', 'outline'), getItem('Overflow', 'overflow')], 'group'),
       getItem('Color', 'color', [getItem('Text Color', 'text-color')], 'group'),
+      getItem('Filter', 'filter', [getItem('Blur', 'blur'), getItem('Brightness', 'brightness'), getItem('Contrast', 'contrast'), getItem('Drop Shadow', 'drop-shadow'), getItem('Grayscale', 'grayscale'), getItem('Hue-Rotate', 'hue-rotate'), getItem('Invert', 'invert'), getItem('Saturate', 'saturate'), getItem('Sepia', 'Sepia')], 'group'),
     ]),
     getItem('HTML', 'html', [
       getItem('Item 1', 'g1', [getItem('Option 1', '1'), getItem('Option 2', '2')], 'group'),

@@ -40,32 +40,114 @@ body[data-theme="dark"] {
   }
 } */
 
-.hideOnMobile {
-  display: none;
+h1 {
+    display: block;
+    font-size: 2.5rem;
+    margin-block-start: 0.67em;
+    margin-block-end: 0.67em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
 }
 
-@media only screen and (min-width: 768px) {
-  .hideOnMobile {
-    display: block;
-  }
+h2 {
+  font-size: 2.25rem;
+}
+
+h3 {
+    font-size: 2rem;
+}
+
+h4 {
+    font-size: 1.75rem;
+}
+
+h5 {
+    font-size: 1.5rem;
+}
+
+h6 {
+    font-size: 1.25rem;
+}
+
+p {
+    font-size: 1rem;
+}
+
+@media (max-width: 480px) {
+    html {
+        font-size: 12px;
+    }
+}
+
+@media (min-width: 480px) {
+    html {
+        font-size: 13px;
+    }
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 14px;
+    }
+}
+
+@media (min-width: 992px) {
+    html {
+        font-size: 15px;
+    }
+}
+
+@media (min-width: 1200px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+.hideOnMobile {
+  display: none;
 }
 
 .hideOnDesktop {
   display: block;
 }
-@media only screen and (min-width: 768px) {
-  .hideOnDesktop {
-    display: none;
-  }
-}
 
 .scroll_height {
-  max-height: calc(100vh);
-  overflow: scroll;
+  max-height: calc(100vh - 67px) !important;
+  overflow: auto;
 }
 
 .scroll_height::-webkit-scrollbar {
+    width: 0;
+}
+
+.scroll_height::-webkit-scrollbar-track {
+  background-color: #e4e4e4;
+  border-radius: 8px;
+}
+
+.scroll_height::-webkit-scrollbar-thumb {
+  background-color: #112a45;
+  border-radius: 8px;
+}
+
+
+@media only screen and (min-width: 768px) {
+  .hideOnMobile {
+    display: block;
+  }
+
+   .hideOnDesktop {
     display: none;
+  }
+  
+  .scroll_height::-webkit-scrollbar{
+    width: 8px;
+  }
+}
+
+.ant-card{
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px !important;
 }
 
 .justify-between {
