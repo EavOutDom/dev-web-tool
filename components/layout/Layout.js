@@ -5,6 +5,7 @@ import styles from './Layout.module.css';
 import { MenuOutlined } from '@ant-design/icons'
 import { useRouter } from "next/router";
 import PageNotFound from "../../pages/404";
+import { data } from "../../data/data";
 
 const LayoutContainer = ({ children, pageNotFound = false }) => {
   const router = useRouter();
@@ -149,6 +150,7 @@ const MenuLayout = (props) => {
       setOpenKeys(latestOpenKey ? [latestOpenKey] : []);
     }
   };
+  // console.log(cssData)
 
   function getItem(label, key, children, type) {
     return {
@@ -158,19 +160,17 @@ const MenuLayout = (props) => {
       type,
     };
   }
-  const items = [
-    getItem('CSS', 'css', [
-      getItem('Animations', 'animations', [getItem('Keyframe Animation', 'keyframe-animation')], 'group'),
-      getItem('Backgrounds', 'backgrounds', [getItem('Background Color', 'background-color'), getItem('Background Gradient', 'background-gradient'), getItem('Background Image', 'background-image')], 'group'),
-      getItem('Box', 'box', [getItem('Border', 'border'), getItem('Border Image', 'border-image'), getItem('Border Radius', 'border-radius'), getItem('Box Shadow', 'box-shadow'), getItem('Opacity', 'opacity'), getItem('Outline', 'outline'), getItem('Overflow', 'overflow')], 'group'),
-      getItem('Color', 'color', [getItem('Text Color', 'text-color')], 'group'),
-      getItem('Filter', 'filter', [getItem('Blur', 'blur'), getItem('Brightness', 'brightness'), getItem('Contrast', 'contrast'), getItem('Drop Shadow', 'drop-shadow'), getItem('Grayscale', 'grayscale'), getItem('Hue-Rotate', 'hue-rotate'), getItem('Invert', 'invert'), getItem('Saturate', 'saturate'), getItem('Sepia', 'Sepia')], 'group'),
-    ]),
-    getItem('HTML', 'html', [
-      getItem('Item 1', 'g1', [getItem('Option 1', '1'), getItem('Option 2', '2')], 'group'),
-      getItem('Item 2', 'g2', [getItem('Option 3', '3'), getItem('Option 4', '4')], 'group'),
-    ]),
-  ];
+  // const items = [
+  //   getItem('CSS', 'css', [
+  //     getItem('Backgrounds', 'backgrounds', [getItem('Background Color', 'background-color'), getItem('Background Gradient', 'background-gradient'), getItem('Background Image', 'background-image')], 'group'),
+  //     getItem('Box', 'box', [getItem('Border', 'border'), getItem('Border Image', 'border-image'), getItem('Border Radius', 'border-radius'), getItem('Box Shadow', 'box-shadow'), getItem('Opacity', 'opacity'), getItem('Outline', 'outline'), getItem('Overflow', 'overflow')], 'group'),
+  //     getItem('Filter', 'filter', [getItem('Blur', 'blur'), getItem('Brightness', 'brightness'), getItem('Contrast', 'contrast'), getItem('Drop Shadow', 'drop-shadow'), getItem('Grayscale', 'grayscale'), getItem('Hue-Rotate', 'hue-rotate'), getItem('Invert', 'invert'), getItem('Saturate', 'saturate'), getItem('Sepia', 'Sepia')], 'group'),
+  //   ]),
+  //   getItem('HTML', 'html', [
+  //     getItem('Item 1', 'g1', [getItem('Option 1', '1'), getItem('Option 2', '2')], 'group'),
+  //     getItem('Item 2', 'g2', [getItem('Option 3', '3'), getItem('Option 4', '4')], 'group'),
+  //   ]),
+  // ];
 
   const onClick = (e) => {
     props.setToggled(false);
@@ -187,7 +187,7 @@ const MenuLayout = (props) => {
     openKeys={openKeys}
     onOpenChange={onOpenChange}
     mode="inline"
-    items={items}
+    items={data}
   />
 };
 export default LayoutContainer;
