@@ -4,8 +4,9 @@ import React, { useState } from "react";
 import styles from './Layout.module.css';
 import { MenuOutlined } from '@ant-design/icons'
 import { useRouter } from "next/router";
+import PageNotFound from "../../pages/404";
 
-const LayoutContainer = ({ children }) => {
+const LayoutContainer = ({ children, pageNotFound = false }) => {
   const router = useRouter();
   const [isToggled, setToggled] = useState(false);
   const onClose = () => {
@@ -63,10 +64,10 @@ const LayoutContainer = ({ children }) => {
           >
             <Breadcrumb.Item>
               <Link href='/' legacyBehavior>
-                Home
+                home
               </Link>
             </Breadcrumb.Item>
-            {crumbList.map((item, idx) => (
+            {!pageNotFound && crumbList.map((item, idx) => (
               <Breadcrumb.Item key={idx}>
                 <Link href={item.href}>{item.title}</Link>
               </Breadcrumb.Item>
@@ -96,7 +97,7 @@ const LayoutContainer = ({ children }) => {
       >
         <Breadcrumb.Item>
           <Link href='/' legacyBehavior>
-            Home
+            home
           </Link>
         </Breadcrumb.Item>
         {crumbList.map((item, idx) => (
@@ -117,7 +118,7 @@ const LayoutContainer = ({ children }) => {
             background: '#fff',
           }}
         >
-          {children}
+          {pageNotFound ? <PageNotFound /> : children}
         </div>
       </Layout.Content>
       <Layout.Footer

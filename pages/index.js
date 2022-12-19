@@ -5,7 +5,11 @@ import { Card, Col, Divider, Row } from 'antd'
 
 export default function Home() {
   return (
-    <section>
+    <div style={{ minHeight: 'calc(100vh - 288px)' }}>
+      <Head>
+        <title>Dev Web tool</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+      </Head>
       <h1>The best free tools code generator for speed up development</h1>
       <p>The only code generator you need for your next project. </p>
       <Divider />
@@ -23,6 +27,6 @@ export default function Home() {
           </Col>
         </Row>
       </div>
-    </section>
+    </div>
   )
 }
