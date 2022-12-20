@@ -21,7 +21,7 @@ const LayoutContainer = ({ children, pageNotFound = false }) => {
     return { href, title };
   });
 
-  return (<Layout style={{ minHeight: '100vh' }}>
+  return (<Layout style={{ minHeight: '100vh' }} hasSider>
 
     {/* drawer for mobile  */}
     <Drawer
@@ -37,7 +37,7 @@ const LayoutContainer = ({ children, pageNotFound = false }) => {
 
     {/* sider for desktop*/}
     <Layout.Sider
-      className="hideOnMobile"
+      className={`hideOnMobile ${styles.siderLayout}`}
       theme="light"
       width={250}
     >
@@ -48,13 +48,10 @@ const LayoutContainer = ({ children, pageNotFound = false }) => {
     </Layout.Sider>
 
     {/* layout  */}
-    <Layout className="site-layout">
+    <Layout className={`site-layout ${styles.mlDesk}`}>
 
       {/* header  */}
-      <Layout.Header
-
-        style={{ padding: '0px 24px', backgroundColor: '#fff' }}
-      >
+      <Layout.Header className={styles.header_layout}>
         {/* Desktop  */}
         <div className='justify-between items-center'>
           <Breadcrumb
@@ -82,7 +79,7 @@ const LayoutContainer = ({ children, pageNotFound = false }) => {
           <div className="justify-between items-center">
             <span onClick={() => setToggled(true)} style={{ cursor: 'pointer' }}><MenuOutlined /></span>
             <Link href='/' legacyBehavior>
-              <span className={styles.header_layout}>Dev Web Tool</span>
+              <span className={styles.header_txt}>Dev Web Tool</span>
             </Link>
             <span>Dark mode</span>
           </div>
@@ -138,9 +135,11 @@ const LayoutContainer = ({ children, pageNotFound = false }) => {
 
 const MenuLayout = (props) => {
   const router = useRouter();
-  const { tool } = router.query;
-  const asPathWithoutQuery = router.asPath.split('/')[1];
+  const arrRoute = router.asPath.split('/');
+  const asPathWithoutQuery = arrRoute[1];
+  const tool = arrRoute[arrRoute.length - 1];
   const [openKeys, setOpenKeys] = useState([asPathWithoutQuery]);
+
 
   const onOpenChange = (keys) => {
     const latestOpenKey = keys.find((key) => openKeys.indexOf(key) === -1);
@@ -170,7 +169,7 @@ const MenuLayout = (props) => {
     style={{
       width: '100%',
     }}
-    className='scroll_height'
+    // className='scroll_height'
     selectedKeys={[tool]}
     openKeys={openKeys}
     onOpenChange={onOpenChange}

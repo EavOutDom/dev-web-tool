@@ -112,26 +112,6 @@ p {
   display: block;
 }
 
-.scroll_height {
-  max-height: calc(100vh - 67px) !important;
-  overflow: auto;
-}
-
-.scroll_height::-webkit-scrollbar {
-    width: 0;
-}
-
-.scroll_height::-webkit-scrollbar-track {
-  background-color: #e4e4e4;
-  border-radius: 8px;
-}
-
-.scroll_height::-webkit-scrollbar-thumb {
-  background-color: #112a45;
-  border-radius: 8px;
-}
-
-
 @media only screen and (min-width: 768px) {
   .hideOnMobile {
     display: block;
@@ -139,10 +119,6 @@ p {
 
    .hideOnDesktop {
     display: none;
-  }
-  
-  .scroll_height::-webkit-scrollbar{
-    width: 8px;
   }
 }
 

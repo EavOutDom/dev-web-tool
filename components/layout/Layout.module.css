@@ -5,7 +5,46 @@
   cursor: pointer;
 }
 
-.header_layout {
+.siderLayout {
+  position: fixed !important;
+  inset: 0;
+  height: 100vh;
+  overflow: auto;
+}
+
+.siderLayout::-webkit-scrollbar {
+    width: 0;
+}
+
+.siderLayout::-webkit-scrollbar-track {
+  background-color: #e4e4e4;
+  border-radius: 8px;
+}
+
+.siderLayout::-webkit-scrollbar-thumb {
+  background-color: #112a45;
+  border-radius: 8px;
+}
+
+.header_txt {
   font-size: 18px;
   font-weight: 700;
+}
+
+.mlDesk {
+  margin-left: 0;
+}
+
+.header_layout {
+  padding: 0 24px !important;
+  background-color: #fff !important;
+}
+
+@media only screen and (min-width: 768px) {
+  .mlDesk {
+    margin-left: 250px;
+  }
+  .siderLayout::-webkit-scrollbar{
+    width: 8px;
+  }
 }
