@@ -1,7 +1,6 @@
 import { Button, Col, Divider, Row } from "antd";
 import Head from "next/head";
 import Link from "next/link";
-import { BsFillArrowLeftSquareFill } from 'react-icons/bs';
 import data from "../../data/data";
 import styles from "./css.module.css";
 import { AiFillRightSquare } from 'react-icons/ai';
