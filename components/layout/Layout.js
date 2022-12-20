@@ -150,7 +150,6 @@ const MenuLayout = (props) => {
       setOpenKeys(latestOpenKey ? [latestOpenKey] : []);
     }
   };
-  // console.log(cssData)
 
   function getItem(label, key, children, type) {
     return {
@@ -162,8 +161,6 @@ const MenuLayout = (props) => {
   }
   // const items = [
   //   getItem('CSS', 'css', [
-  //     getItem('Backgrounds', 'backgrounds', [getItem('Background Color', 'background-color'), getItem('Background Gradient', 'background-gradient'), getItem('Background Image', 'background-image')], 'group'),
-  //     getItem('Box', 'box', [getItem('Border', 'border'), getItem('Border Image', 'border-image'), getItem('Border Radius', 'border-radius'), getItem('Box Shadow', 'box-shadow'), getItem('Opacity', 'opacity'), getItem('Outline', 'outline'), getItem('Overflow', 'overflow')], 'group'),
   //     getItem('Filter', 'filter', [getItem('Blur', 'blur'), getItem('Brightness', 'brightness'), getItem('Contrast', 'contrast'), getItem('Drop Shadow', 'drop-shadow'), getItem('Grayscale', 'grayscale'), getItem('Hue-Rotate', 'hue-rotate'), getItem('Invert', 'invert'), getItem('Saturate', 'saturate'), getItem('Sepia', 'Sepia')], 'group'),
   //   ]),
   //   getItem('HTML', 'html', [
