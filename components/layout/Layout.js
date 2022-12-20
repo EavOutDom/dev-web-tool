@@ -5,7 +5,7 @@ import styles from './Layout.module.css';
 import { MenuOutlined } from '@ant-design/icons'
 import { useRouter } from "next/router";
 import PageNotFound from "../../pages/404";
-import { data } from "../../data/data";
+import data from "../../data/data";
 
 const LayoutContainer = ({ children, pageNotFound = false }) => {
   const router = useRouter();
@@ -158,16 +158,7 @@ const MenuLayout = (props) => {
       label,
       type,
     };
-  }
-  // const items = [
-  //   getItem('CSS', 'css', [
-  //     getItem('Filter', 'filter', [getItem('Blur', 'blur'), getItem('Brightness', 'brightness'), getItem('Contrast', 'contrast'), getItem('Drop Shadow', 'drop-shadow'), getItem('Grayscale', 'grayscale'), getItem('Hue-Rotate', 'hue-rotate'), getItem('Invert', 'invert'), getItem('Saturate', 'saturate'), getItem('Sepia', 'Sepia')], 'group'),
-  //   ]),
-  //   getItem('HTML', 'html', [
-  //     getItem('Item 1', 'g1', [getItem('Option 1', '1'), getItem('Option 2', '2')], 'group'),
-  //     getItem('Item 2', 'g2', [getItem('Option 3', '3'), getItem('Option 4', '4')], 'group'),
-  //   ]),
-  // ];
+  };
 
   const onClick = (e) => {
     props.setToggled(false);

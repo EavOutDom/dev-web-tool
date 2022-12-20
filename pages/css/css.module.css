@@ -1,0 +1,18 @@
+.parent_txt {
+  color: #0070f3;
+}
+
+.box {
+  width: 100%;
+  border: 1px solid rgb(50, 50, 50);
+  padding: 10px;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: 600;
+  border-radius: 4px;
+}
+
+.box:hover {
+  border-color: #0070f3;
+  color: #0070f3;
+}

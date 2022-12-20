@@ -1,7 +1,8 @@
-import Head from 'next/head'
-import Link from 'next/link'
-import styles from '../styles/Home.module.css'
-import { Card, Col, Divider, Row } from 'antd'
+import Head from 'next/head';
+import Link from 'next/link';
+import styles from '../styles/Home.module.css';
+import { Card, Col, Divider, Row } from 'antd';
+import data from '../data/data';
 
 export default function Home() {
   return (

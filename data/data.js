@@ -1,4 +1,4 @@
-export const data = [
+const data = [
   {
     label: 'CSS',
     key: 'css',
@@ -138,3 +138,5 @@ export const data = [
     }]
   }
 ];
+
+export default data;
