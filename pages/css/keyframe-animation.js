@@ -12,7 +12,7 @@ const KeyframeAnimation = () => {
   const childTabs = (key) => {
     switch (key) {
       case 'attention':
-        return <SegmentedTabs state={state} setState={setState} option1={['Blink', 'Bound']} option2={['Variation 1', 'Variation 2']} />
+        return <SegmentedTabs state={state} setState={setState} option1={['Blink', 'Bound', 'Jello']} option2={['Variation 1', 'Variation 2']} />
       case 'background':
         return <Segmented options={['Test 2']} />
       case 'basic':
