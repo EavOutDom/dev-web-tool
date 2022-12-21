@@ -1,6 +1,6 @@
 import { Breadcrumb, Col, Drawer, Layout, Menu, Row } from "antd";
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from './Layout.module.css';
 import { MenuOutlined } from '@ant-design/icons'
 import { useRouter } from "next/router";
@@ -138,8 +138,11 @@ const MenuLayout = (props) => {
   const arrRoute = router.asPath.split('/');
   const asPathWithoutQuery = arrRoute[1];
   const tool = arrRoute[arrRoute.length - 1];
-  const [openKeys, setOpenKeys] = useState([asPathWithoutQuery]);
+  const [openKeys, setOpenKeys] = useState(['']);
 
+  useEffect(() => {
+    setOpenKeys(asPathWithoutQuery);
+  }, [asPathWithoutQuery]);
 
   const onOpenChange = (keys) => {
     const latestOpenKey = keys.find((key) => openKeys.indexOf(key) === -1);
@@ -148,15 +151,6 @@ const MenuLayout = (props) => {
     } else {
       setOpenKeys(latestOpenKey ? [latestOpenKey] : []);
     }
-  };
-
-  function getItem(label, key, children, type) {
-    return {
-      key,
-      children,
-      label,
-      type,
-    };
   };
 
   const onClick = (e) => {
@@ -169,7 +163,6 @@ const MenuLayout = (props) => {
     style={{
       width: '100%',
     }}
-    // className='scroll_height'
     selectedKeys={[tool]}
     openKeys={openKeys}
     onOpenChange={onOpenChange}
