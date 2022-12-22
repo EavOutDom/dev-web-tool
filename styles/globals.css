@@ -147,5 +147,21 @@ code {
 
 .content_title {
   font-weight: 600;
-  font-size: 20px;
+  font-size: 22px;
+}
+
+.react-colorful {
+  z-index: 1000 !important;
+}
+
+.react-colorful__pointer {
+  width: 12px !important;
+  height: 12px !important;
+  border-radius: 12px !important;
+}
+
+.react-colorful__hue-pointer {
+  width: 12px !important;
+  height: 12px !important;
+  border-radius: 12px !important;
 }

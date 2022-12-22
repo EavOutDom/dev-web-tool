@@ -1,10 +1,8 @@
 .picker {
   position: relative;
-  z-index: 1000;
 }
 
 .swatch {
-  width: 100px;
   height: 28px;
   border-radius: 8px;
   border: 3px solid #fff;

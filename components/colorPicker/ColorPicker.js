@@ -3,7 +3,7 @@ import { HexColorPicker } from "react-colorful";
 import styles from './ColorPicker.module.css';
 import { useOnClickOutside } from "../../lib/useOnClickOutside";
 
-const ColorPicker = ({ color = '#000', onChange }) => {
+const ColorPicker = ({ color = '#000', onChange, width = 100 }) => {
   const pickerRef = useRef();
   const [isOpen, setIsOpen] = useState(false);
   const close = useCallback(() => setIsOpen(false), []);
@@ -11,7 +11,7 @@ const ColorPicker = ({ color = '#000', onChange }) => {
   return (<div className={styles.picker}>
     <div
       className={styles.swatch}
-      style={{ backgroundColor: color }}
+      style={{ backgroundColor: color, width: width }}
       onClick={() => setIsOpen(true)}
     />
     {isOpen && (

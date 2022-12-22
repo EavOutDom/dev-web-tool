@@ -16,7 +16,7 @@ const TextColor = () => {
         <div>
           <p className="content_title">Options</p>
           <Card title='Color'>
-            <div className="items-center" style={{ gap: 10 }}>
+            <div className="items-center justify-between" style={{ gap: 10 }}>
               <ColorPicker color={color} onChange={setColor} name={color} />
               <label>{color}</label>
             </div>
@@ -25,7 +25,7 @@ const TextColor = () => {
       </ContentLayout.Options>
       <ContentLayout.Preview>
         <div>
-          <p className="content_title">Options</p>
+          <p className="content_title">Preview</p>
           <Card>
             <div style={{ color: color }}>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime consequatur sed, repudiandae, libero itaque officia tenetur hic voluptate cumque enim porro deserunt eum et amet rerum? Iure iste sit vel!
