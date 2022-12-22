@@ -14,7 +14,7 @@ const Border = () => {
     border_color: '#000000',
     background_color: '#a0a0a0'
   });
-  console.log(state)
+
   return (<section>
     <ContentLayout back='/css' name='Border' browser={{ chrome: 'yes', edge: 'yes', firefox: 'yes', opera: 'yes', safari: 'yes' }}>
       <ContentLayout.Options>

@@ -135,7 +135,7 @@ const MenuLayout = (props) => {
   const [openKeys, setOpenKeys] = useState(['']);
 
   useEffect(() => {
-    setOpenKeys(asPathWithoutQuery);
+    setOpenKeys([asPathWithoutQuery]);
   }, [asPathWithoutQuery]);
 
   const onOpenChange = (keys) => {

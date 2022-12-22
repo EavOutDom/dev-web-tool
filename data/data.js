@@ -34,7 +34,7 @@ const data = [
             key: 'border'
           },
           {
-            label: 'Border Image',
+            label: 'Border-Image',
             key: 'border-image'
           },
           {

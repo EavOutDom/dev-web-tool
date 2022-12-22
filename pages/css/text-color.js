@@ -11,7 +11,7 @@ const TextColor = () => {
   const textRef = useRef('');
 
   return (<section>
-    <ContentLayout back={'/css'} name='Text Color CSS Generator' browser={{ chrome: 'yes', firefox: 'yes', safari: 'yes', edge: 'yes', opera: 'yes' }}>
+    <ContentLayout back={'/css'} name='Text Color' browser={{ chrome: 'yes', firefox: 'yes', safari: 'yes', edge: 'yes', opera: 'yes' }}>
       <ContentLayout.Options>
         <div>
           <p className="content_title">Options</p>

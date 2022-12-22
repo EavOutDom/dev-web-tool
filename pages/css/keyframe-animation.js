@@ -25,7 +25,7 @@ const KeyframeAnimation = () => {
   };
 
   return (<section>
-    <ContentLayout name='Animations CSS Generator' back='/css' browser={{ chrome: 'yes', firefox: 'yes', safari: 'yes', edge: 'yes', opera: 'yes' }} />
+    <ContentLayout name='Animations' back='/css' browser={{ chrome: 'yes', firefox: 'yes', safari: 'yes', edge: 'yes', opera: 'yes' }} />
     <>
       <Tabs
         defaultActiveKey="attention"
