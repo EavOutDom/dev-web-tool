@@ -74,6 +74,15 @@ p {
     font-size: 1rem;
 }
 
+code {
+  white-space: pre-wrap;
+}
+
+.tab_1{
+  tab-size: 4px;
+  -o-tab-size: 4px;
+}
+
 @media (max-width: 480px) {
     html {
         font-size: 12px;

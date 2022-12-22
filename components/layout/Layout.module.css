@@ -40,11 +40,21 @@
   background-color: #fff !important;
 }
 
+.layout_content {
+  min-height: 360px;
+  background-color: #fff;
+  padding: 8px;
+}
+
+
 @media only screen and (min-width: 768px) {
   .mlDesk {
     margin-left: 250px;
   }
   .siderLayout::-webkit-scrollbar{
     width: 8px;
+  }
+  .layout_content {
+    padding: 24px;
   }
 }

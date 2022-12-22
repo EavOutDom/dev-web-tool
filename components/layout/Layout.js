@@ -109,13 +109,7 @@ const LayoutContainer = ({ children, pageNotFound = false }) => {
           margin: '24px 16px',
         }}
       >
-        <div
-          style={{
-            padding: 24,
-            minHeight: 360,
-            background: '#fff',
-          }}
-        >
+        <div className={styles.layout_content}>
           {pageNotFound ? <PageNotFound /> : children}
         </div>
       </Layout.Content>

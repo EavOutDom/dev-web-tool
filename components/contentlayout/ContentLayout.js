@@ -5,7 +5,9 @@ import { FaChrome, FaEdge, FaFirefox, FaOpera, FaSafari } from 'react-icons/fa';
 import styles from './ContentLayout.module.css'
 
 const ContentLayout = ({ children, name, back, browser = { safari: '', firefox: '', chrome: '', edge: '', opera: '' } }) => {
-  const [{ props: Options }, { props: Preview }] = children;
+  if (children) {
+    var [{ props: Options }, { props: Preview }] = children;
+  }
   return (<main>
     <Link href={back}>
       <BsFillArrowLeftSquareFill size={35} />
@@ -29,10 +31,18 @@ const ContentLayout = ({ children, name, back, browser = { safari: '', firefox: 
       </Tooltip>
     </div>}
     <Divider />
-    <Row gutter={[24, 24]}>
-      <Col xs={24} md={12}>{Options.children}</Col>
-      <Col xs={24} md={12}>{Preview.children}</Col>
-    </Row>
+    {children && <Row gutter={[48, 24]}>
+      <Col xs={24} lg={10}>
+        <div>
+          {Options.children}
+        </div>
+      </Col>
+      <Col xs={24} lg={14} >
+        <div>
+          {Preview.children}
+        </div>
+      </Col>
+    </Row>}
   </main>
   );
 }
