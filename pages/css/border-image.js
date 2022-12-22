@@ -50,7 +50,7 @@ const BorderImage = () => {
             <div
               style={{
                 height: 200,
-                widows: '100%',
+                width: '100%',
                 background: '#a0a0a0',
                 borderWidth: state.width,
                 borderStyle: 'solid',

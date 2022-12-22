@@ -57,7 +57,7 @@ const Border = () => {
           <Card>
             <div style={{
               height: 200,
-              widows: '100%',
+              width: '100%',
               background: state.background_color,
               borderWidth: state.border_width,
               borderStyle: state.border_style,
