@@ -39,13 +39,13 @@ const Border = () => {
             <Divider dashed />
             <label htmlFor="color">Border color</label>
             <div id="color" className="items-center justify-between" style={{ gap: 10, width: '100%' }}>
-              <ColorPicker width={120} color={state.border_color} onChange={e => setState(p => ({ ...p, border_color: e }))} />
+              <ColorPicker colorInput width={120} color={state.border_color} onChange={e => setState(p => ({ ...p, border_color: e }))} />
               <span>{state.border_color}</span>
             </div>
             <Divider dashed />
             <label htmlFor="color">Background</label>
             <div id="color" className="items-center justify-between" style={{ gap: 10, width: '100%' }}>
-              <ColorPicker width={120} color={state.background_color} onChange={e => setState(p => ({ ...p, background_color: e }))} />
+              <ColorPicker colorInput width={120} color={state.background_color} onChange={e => setState(p => ({ ...p, background_color: e }))} />
               <span>{state.background_color}</span>
             </div>
           </Card>

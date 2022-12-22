@@ -1,9 +1,9 @@
 import { useCallback, useRef, useState } from "react";
-import { HexColorPicker } from "react-colorful";
+import { HexColorInput, HexColorPicker } from "react-colorful";
 import styles from './ColorPicker.module.css';
 import { useOnClickOutside } from "../../lib/useOnClickOutside";
 
-const ColorPicker = ({ color = '#000', onChange, width = 100 }) => {
+const ColorPicker = ({ colorInput, color = '#000', onChange, width = 100 }) => {
   const pickerRef = useRef();
   const [isOpen, setIsOpen] = useState(false);
   const close = useCallback(() => setIsOpen(false), []);
@@ -19,6 +19,7 @@ const ColorPicker = ({ color = '#000', onChange, width = 100 }) => {
         <HexColorPicker color={color} onChange={onChange} />
       </div>
     )}
+    {colorInput && <HexColorInput className={styles.hexInput} style={{ width: width }} color={color} onChange={onChange} />}
   </div>);
 }
 
