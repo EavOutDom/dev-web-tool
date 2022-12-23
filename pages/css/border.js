@@ -17,6 +17,9 @@ const Border = () => {
 
   return (<section>
     <ContentLayout back='/css' name='Border' browser={{ chrome: 'yes', edge: 'yes', firefox: 'yes', opera: 'yes', safari: 'yes' }}>
+      <ContentLayout.Paragraph>
+        <p>{`The border shorthand CSS property sets an element's border. It sets the values of border-width, border-style, and border-color.`}</p>
+      </ContentLayout.Paragraph>
       <ContentLayout.Options>
         <div>
           <p className="content_title">Options</p>

@@ -12,6 +12,11 @@ const TextColor = () => {
 
   return (<section>
     <ContentLayout back={'/css'} name='Text Color' browser={{ chrome: 'yes', firefox: 'yes', safari: 'yes', edge: 'yes', opera: 'yes' }}>
+      <ContentLayout.Paragraph>
+        <p>
+          {`The color CSS property sets the foreground color value of an element's text and text decorations, and sets the currentcolor value. currentcolor may be used as an indirect value on other properties and is the default for other color properties, such as border-color.`}
+        </p>
+      </ContentLayout.Paragraph>
       <ContentLayout.Options>
         <div>
           <p className="content_title">Options</p>

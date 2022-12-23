@@ -17,6 +17,11 @@ const BorderImage = () => {
 
   return (<section>
     <ContentLayout name='Border-Image' back='/css' browser={{ chrome: 'yes', edge: 'yes', firefox: 'yes', opera: 'yes', safari: 'yes' }}>
+      <ContentLayout.Paragraph>
+        <p>
+          {`The border-image CSS property draws an image around a given element. It replaces the element's regular border.`}
+        </p>
+      </ContentLayout.Paragraph>
       <ContentLayout.Options>
         <div>
           <p className="content_title">Options</p>

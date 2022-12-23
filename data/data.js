@@ -46,6 +46,10 @@ const data = [
             key: 'box-shadow'
           },
           {
+            label: 'Box Resize',
+            key: 'box-resize'
+          },
+          {
             label: 'Opacity',
             key: 'opacity'
           },

@@ -6,7 +6,7 @@ import styles from './ContentLayout.module.css'
 
 const ContentLayout = ({ children, name, back, browser = { safari: '', firefox: '', chrome: '', edge: '', opera: '' } }) => {
   if (children) {
-    var [{ props: Options }, { props: Preview }] = children;
+    var [{ props: Paragraph }, { props: Options }, { props: Preview }] = children;
   }
   return (<main>
     <Link href={back}>
@@ -30,27 +30,36 @@ const ContentLayout = ({ children, name, back, browser = { safari: '', firefox: 
         <FaSafari />
       </Tooltip>
     </div>}
-    <Divider />
-    {children && <Row gutter={[48, 24]}>
-      <Col xs={24} lg={10}>
-        <div>
-          {Options.children}
-        </div>
-      </Col>
-      <Col xs={24} lg={14} >
-        <div>
-          {Preview.children}
-        </div>
-      </Col>
-    </Row>}
-  </main>
+    {children && <>
+      <Row>
+        <Col span={24}>{Paragraph.children}</Col>
+      </Row>
+      <Divider />
+      <Row gutter={[48, 24]}>
+        <Col xs={24} lg={10}>
+          <div>
+            {Options.children}
+          </div>
+        </Col>
+        <Col xs={24} lg={14} >
+          <div>
+            {Preview.children}
+          </div>
+        </Col>
+      </Row></>}
+  </main >
   );
 }
+
+const Paragraph = (children) => (children);
+ContentLayout.Paragraph = Paragraph;
 
 const Options = (children) => (children);
 ContentLayout.Options = Options;
 
 const Preview = (children) => (children);
 ContentLayout.Preview = Preview;
+
+
 
 export default ContentLayout;
