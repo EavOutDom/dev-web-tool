@@ -35,7 +35,7 @@ const BorderImage = () => {
               <Select.Option value="space">space</Select.Option>
             </Select>
             <Divider dashed />
-            <label htmlFor="slice">Slice {state.slice + 'px'}</label>
+            <label htmlFor="slice">Slice {state.slice}</label>
             <Slider id="slice" value={state.slice} min={0} max={100} onChange={v => setState(pre => ({ ...pre, slice: v }))} />
             <Divider dashed />
             <label htmlFor="width">Width {state.width + 'px'}</label>
