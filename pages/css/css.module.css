@@ -16,3 +16,15 @@
   border-color: #0070f3;
   color: #0070f3;
 }
+
+
+.box_shadow {
+  height: 200px;
+  width: 200px;
+  padding: 5px;
+  border-radius: 5px;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}

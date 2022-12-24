@@ -1,10 +1,17 @@
-import { Button, Card, Collapse, Divider, Select, Slider } from "antd";
+import { Button, Card, Col, Collapse, Divider, Row, Select, Slider } from "antd";
 import ContentLayout from "../../components/contentLayout/ContentLayout";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { AiFillDelete } from 'react-icons/ai';
 import ColorPicker from "../../components/colorPicker/ColorPicker";
+import { FaCopy } from "react-icons/fa";
+import { useCopy } from "../../lib/useCopy";
+import boxShadowEx from "../../data/boxShadow";
+import styles from './css.module.css';
 
 const BoxShadow = () => {
+  const shadowRef = useRef('');
+  const [copyText, setCopy] = useCopy();
+  const [__, setCopyExam] = useCopy(true);
   const [lists, setLists] = useState([
     {
       id: 1,
@@ -55,8 +62,35 @@ const BoxShadow = () => {
             />
           </Card>
         </div>
+        <div>
+          <p className="content_title">Code</p>
+          <Card>
+            <div className="justify-between items-center">
+              <code ref={shadowRef}>
+                box-shadow: {boxShadow()};
+              </code>
+              <Button onClick={() => setCopy(shadowRef)} icon={<FaCopy />} />
+            </div>
+          </Card>
+        </div>
       </ContentLayout.Preview>
     </ContentLayout>
+    <div align='middle'>
+      <h1>Beautiful CSS box-shadow examples</h1>
+      <Row gutter={[24, 96]}>
+        {boxShadowEx.map((data, index) => <Col xs={24} md={12} lg={8} xl={6} key={index}>
+          <div
+            onClick={() => setCopyExam(data)}
+            style={{
+              boxShadow: data.slice(12, -1),
+            }}
+            className={styles.box_shadow}
+          >
+            {index + 1}
+          </div>
+        </Col>)}
+      </Row>
+    </div>
   </section>);
 };
 
