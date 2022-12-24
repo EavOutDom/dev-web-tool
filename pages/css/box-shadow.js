@@ -17,13 +17,15 @@ const BoxShadow = () => {
     }
   ]);
 
-
   function boxShadow() {
     const newArr = [...lists];
-    console.log(newArr);
-
-    return '5px 5px 10px 1px #000'
+    const arr = [];
+    newArr.forEach(object => {
+      arr.push(object.hOffset + 'px ' + object.vOffset + 'px ' + object.blur + 'px ' + object.spread + 'px ' + object.color + (object.inset === 1 ? ' inset' : ''));
+    });
+    return arr.join(', ');
   };
+
   return (<section>
     <ContentLayout back='/css' name='Box Shadow' browser={{ chrome: 'yes', edge: 'yes', firefox: 'yes', opera: 'yes', safari: 'yes' }}>
       <ContentLayout.Paragraph>
@@ -108,10 +110,10 @@ const ListOptionsShadow = ({ lists, setLists }) => {
         </div>
         <Divider dashed />
         <label htmlFor="hOffset">Horizontal Offset {list.hOffset + 'px'}</label>
-        <Slider id="hOffset" value={list.hOffset} onChange={v => handleChange(v, list.id, 'hOffset')} />
+        <Slider id="hOffset" value={list.hOffset} min={-100} max={100} onChange={v => handleChange(v, list.id, 'hOffset')} />
         <Divider dashed />
         <label htmlFor="vOffset">Vertical Offset {list.vOffset + 'px'}</label>
-        <Slider id="vOffset" value={list.vOffset} onChange={v => handleChange(v, list.id, 'vOffset')} />
+        <Slider id="vOffset" value={list.vOffset} min={-100} max={100} onChange={v => handleChange(v, list.id, 'vOffset')} />
         <Divider dashed />
         <label htmlFor="blur">Blur {list.blur + 'px'}</label>
         <Slider id="blur" value={list.blur} onChange={v => handleChange(v, list.id, 'blur')} />
