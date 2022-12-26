@@ -31,6 +31,7 @@ const LayoutContainer = ({ children, pageNotFound = false }) => {
       open={isToggled}
       width='65%'
       bodyStyle={{ padding: 0 }}
+      headerStyle={{ padding: 16 }}
     >
       <MenuLayout setToggled={setToggled} />
     </Drawer>
