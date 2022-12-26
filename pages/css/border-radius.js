@@ -87,7 +87,7 @@ const BorderRadius = () => {
               <code ref={ref}>
                 border-radius: {state.type === 0 ? state.radius + 'px' : state.tl + 'px ' + state.tr + 'px ' + state.br + 'px ' + state.bl + 'px'};
               </code>
-              <Button onClick={() => setCopy(ref)} icon={<FaCopy />}></Button>
+              <Button onClick={() => setCopy(ref)} icon={<FaCopy />} />
             </div>
           </Card>
         </div>

@@ -4,7 +4,7 @@ import { BsFillArrowLeftSquareFill } from "react-icons/bs";
 import { FaChrome, FaEdge, FaFirefox, FaOpera, FaSafari } from 'react-icons/fa';
 import styles from './ContentLayout.module.css'
 
-const ContentLayout = ({ children, name, back, browser = { safari: '', firefox: '', chrome: '', edge: '', opera: '' } }) => {
+const ContentLayout = ({ children, name, back, browser = { safari: 'yes', firefox: 'yes', chrome: 'yes', edge: 'yes', opera: 'yes' } }) => {
   if (children) {
     var [{ props: Paragraph }, { props: Options }, { props: Preview }] = children;
   }

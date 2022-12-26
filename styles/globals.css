@@ -140,6 +140,11 @@ code {
   justify-content: space-between;
 }
 
+.justify-center{
+  display: flex;
+  justify-content: center;
+}
+
 .items-center {
   display: flex;
   align-items: center;
