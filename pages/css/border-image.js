@@ -75,7 +75,7 @@ const BorderImage = () => {
                 border: {state.width + 'px solid'};{'\n'}
                 border-image: url(`${state.imgUrl}`) {state.slice} / {state.width}px / {state.outset}px {state.repeat};
               </code>
-              <Button onClick={() => setCopy(borderRef)} icon={<FaCopy />}></Button>
+              <Button onClick={() => setCopy(borderRef)} icon={<FaCopy />}/>
             </div>
           </Card>
         </div>

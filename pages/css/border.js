@@ -47,7 +47,7 @@ const Border = () => {
             </div>
             <Divider dashed />
             <label htmlFor="color">Background</label>
-            <div id="color" className="items-center justify-between" style={{ gap: 10, width: '100%' }}>
+            <div id="color" className="items-center justify-between">
               <ColorPicker colorInput width={120} color={state.background_color} onChange={e => setState(p => ({ ...p, background_color: e }))} />
               <span>{state.background_color}</span>
             </div>

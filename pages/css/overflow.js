@@ -21,8 +21,6 @@ const Overflow = () => {
     }
   }
 
-  console.log(code());
-
   return (<section>
     <ContentLayout back='/css' name='Overflow'>
       <ContentLayout.Paragraph>
