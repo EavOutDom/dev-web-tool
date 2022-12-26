@@ -44,7 +44,7 @@ const BackgroundColor = () => {
           <Card>
             <div className="justify-between items-center">
               <code ref={ref}>
-                background-color: {bc}
+                background-color: {bc};
               </code>
               <Button onClick={() => setCopy(ref)} icon={<FaCopy />} />
             </div>
