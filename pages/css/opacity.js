@@ -20,7 +20,7 @@ const Opacity = () => {
           <p className="content_title">Options</p>
           <Card>
             <label htmlFor="opacity">Value {opacity}%</label>
-            <Slider id="opacity" value={opacity} range onChange={v => setOpacity(v)} />
+            <Slider id="opacity" value={opacity} onChange={v => setOpacity(v)} />
           </Card>
         </div>
       </ContentLayout.Options>
