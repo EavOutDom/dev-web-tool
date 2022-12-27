@@ -31,8 +31,9 @@ const Contrast = () => {
             <div
               style={{
                 height: 200,
-                width: '100%',
-                background: 'url(https://codetheweb.blog/assets/img/posts/css-advanced-background-images/cover.jpg) 50%/cover no-repeat',
+                backgroundPosition: 'center',
+                backgroundRepeat: 'no-repeat',
+                backgroundImage: 'url(https://interactive-examples.mdn.mozilla.net/media/examples/firefox-logo.svg)',
                 filter: `contrast(${amount}%)`
               }}
             />
