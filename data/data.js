@@ -152,6 +152,17 @@ const data = [
         ],
         type: 'group'
       },
+      {
+        label: 'Miscellaneous',
+        key: 'miscellaneous',
+        children: [
+          {
+            label: 'Cursor',
+            key: 'cursor',
+          },
+        ],
+        type: 'group'
+      },
     ]
   },
   {
