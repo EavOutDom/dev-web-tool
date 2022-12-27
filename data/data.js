@@ -122,6 +122,25 @@ const data = [
         ],
         type: 'group'
       },
+      {
+        label: 'Layout',
+        key: 'layout',
+        children: [
+          {
+            label: 'Columns',
+            key: 'columns'
+          },
+          {
+            label: 'Display',
+            key: 'display'
+          },
+          {
+            label: 'Visibility',
+            key: 'visibility'
+          }
+        ],
+        type: 'group'
+      },
     ]
   },
   {
