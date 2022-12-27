@@ -11,7 +11,7 @@ const CssPage = () => {
     <Head>
       <title>CSS | Dev Web Tool</title>
     </Head>
-    <ContentLayout back='/' name='CSS Generator' />
+    <ContentLayout back='/' name='CSS Generator' browser={null} />
     {data[0].children.map(item1 => (
       <div key={item1.key}>
         <h2 className={styles.parent_txt}>{item1.label}</h2>

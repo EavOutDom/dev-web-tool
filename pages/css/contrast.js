@@ -4,23 +4,23 @@ import { useRef, useState } from "react";
 import { FaCopy } from "react-icons/fa";
 import { useCopy } from "../../lib/useCopy";
 
-const Brightness = () => {
+const Contrast = () => {
   const [amount, setAmount] = useState(140);
   const [copy, setCopy] = useCopy();
   const ref = useRef();
   return (<section>
-    <ContentLayout name='Brightness' back="/css" >
+    <ContentLayout name='Contrast' back="/css" >
       <ContentLayout.Paragraph>
         <p>
-          {`The brightness() CSS function applies a linear multiplier to the input image, making it appear brighter or darker. Its result is a <filter-function>.`}
+          {`The contrast() CSS function adjusts the contrast of the input image. Its result is a <filter-function>.`}
         </p>
       </ContentLayout.Paragraph>
       <ContentLayout.Options>
         <div>
           <p className="content_title">Option</p>
           <Card>
-            <label htmlFor="brightness">Brightness {amount}%</label>
-            <Slider value={amount} onChange={setAmount} id='brightness' max={300} />
+            <label htmlFor="contrast">Contrast {amount}%</label>
+            <Slider value={amount} onChange={setAmount} id='contrast' max={300} />
           </Card>
         </div>
       </ContentLayout.Options>
@@ -33,7 +33,7 @@ const Brightness = () => {
                 height: 200,
                 width: '100%',
                 background: 'url(https://codetheweb.blog/assets/img/posts/css-advanced-background-images/cover.jpg) 50%/cover no-repeat',
-                filter: `brightness(${amount}%)`
+                filter: `contrast(${amount}%)`
               }}
             />
           </Card>
@@ -43,7 +43,7 @@ const Brightness = () => {
           <Card>
             <div className="justify-between items-center">
               <code ref={ref}>
-                filter: brightness({amount}%);
+                filter: contrast({amount}%);
               </code>
               <Button onClick={() => setCopy(ref)} icon={<FaCopy />} />
             </div>
@@ -54,4 +54,4 @@ const Brightness = () => {
   </section>);
 }
 
-export default Brightness;
+export default Contrast;
