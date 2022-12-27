@@ -11,7 +11,7 @@ const TextColor = () => {
   const textRef = useRef('');
 
   return (<section>
-    <ContentLayout back={'/css'} name='Text Color' browser={{ chrome: 'yes', firefox: 'yes', safari: 'yes', edge: 'yes', opera: 'yes' }}>
+    <ContentLayout back={'/css'} name='Text Color'>
       <ContentLayout.Paragraph>
         <p>
           {`The color CSS property sets the foreground color value of an element's text and text decorations, and sets the currentcolor value. currentcolor may be used as an indirect value on other properties and is the default for other color properties, such as border-color.`}
@@ -20,7 +20,8 @@ const TextColor = () => {
       <ContentLayout.Options>
         <div>
           <p className="content_title">Options</p>
-          <Card title='Color'>
+          <Card>
+            <label htmlFor="">Color</label>
             <div className="items-center justify-between" style={{ gap: 10 }}>
               <ColorPicker colorInput color={color} onChange={setColor} name={color} />
               <label>{color}</label>
