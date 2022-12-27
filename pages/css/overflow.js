@@ -40,7 +40,7 @@ const Overflow = () => {
             </Select>
             <Divider />
             <label htmlFor="overflow">Value</label>
-            <Select style={{ width: '100%' }} id='overflow' value={overflow} onChange={e => setOverflow(e)}>
+            <Select style={{ width: '100%' }} id='overflow' value={overflow} onChange={setOverflow}>
               <Select.Option value='auto'>auto</Select.Option>
               <Select.Option value='hidden'>hidden</Select.Option>
               <Select.Option value='scroll'>scroll</Select.Option>
