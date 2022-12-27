@@ -141,6 +141,17 @@ const data = [
         ],
         type: 'group'
       },
+      {
+        label: 'List',
+        key: 'list',
+        children: [
+          {
+            label: 'List Style',
+            key: 'list-style'
+          },
+        ],
+        type: 'group'
+      },
     ]
   },
   {
