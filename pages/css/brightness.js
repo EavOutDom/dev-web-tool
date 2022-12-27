@@ -4,23 +4,23 @@ import { useRef, useState } from "react";
 import { FaCopy } from "react-icons/fa";
 import { useCopy } from "../../lib/useCopy";
 
-const Blur = () => {
-  const [radius, setRadius] = useState(5);
+const Brightness = () => {
+  const [amount, setAmount] = useState(100);
   const [copy, setCopy] = useCopy();
   const ref = useRef();
   return (<section>
-    <ContentLayout name='Blur' back='/css'>
+    <ContentLayout name='Brightness' back="/css" >
       <ContentLayout.Paragraph>
         <p>
-          {`The blur() CSS function applies a Gaussian blur to the input image. Its result is a <filter-function>.`}
+          {`The brightness() CSS function applies a linear multiplier to the input image, making it appear brighter or darker. Its result is a <filter-function>.`}
         </p>
       </ContentLayout.Paragraph>
       <ContentLayout.Options>
         <div>
           <p className="content_title">Option</p>
           <Card>
-            <label htmlFor="blur">Radius {radius}px</label>
-            <Slider value={radius} onChange={setRadius} id='blur' />
+            <label htmlFor="brightness">Brightness {amount}%</label>
+            <Slider value={amount} onChange={setAmount} id='brightness' max={300} />
           </Card>
         </div>
       </ContentLayout.Options>
@@ -33,7 +33,7 @@ const Blur = () => {
                 height: 200,
                 width: '100%',
                 background: 'url(https://codetheweb.blog/assets/img/posts/css-advanced-background-images/cover.jpg) 50%/cover no-repeat',
-                filter: `blur(${radius}px)`
+                filter: `brightness(${amount}%)`
               }}
             />
           </Card>
@@ -43,7 +43,7 @@ const Blur = () => {
           <Card>
             <div className="justify-between items-center">
               <code ref={ref}>
-                filter: blur({radius}px);
+                filter: brightness({amount}%);
               </code>
               <Button onClick={() => setCopy(ref)} icon={<FaCopy />} />
             </div>
@@ -54,4 +54,4 @@ const Blur = () => {
   </section>);
 }
 
-export default Blur;
+export default Brightness;
