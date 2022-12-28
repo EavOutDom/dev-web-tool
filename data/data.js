@@ -180,10 +180,6 @@ const data = [
             key: 'overflow-wrap',
           },
           {
-            label: 'Overflow Wrap',
-            key: 'overflow-wrap',
-          },
-          {
             label: 'Tab Size',
             key: 'tab-size',
           },
