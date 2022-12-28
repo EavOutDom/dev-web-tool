@@ -4,23 +4,23 @@ import { useRef, useState } from "react";
 import { useCopy } from "../../lib/useCopy";
 import { FaCopy } from "react-icons/fa";
 
-const LetterSpacing = () => {
-  const [length, setLength] = useState(5);
+const LineHeight = () => {
+  const [value, setValue] = useState(2);
   const [copy, setCopy] = useCopy('');
   const ref = useRef();
   return (<section>
-    <ContentLayout name='Letter Spacing' back="/css" >
+    <ContentLayout name='Line Height' back="/css" >
       <ContentLayout.Paragraph>
         <p>
-          {`The letter-spacing CSS property sets the horizontal spacing behavior between text characters. This value is added to the natural spacing between characters while rendering the text. Positive values of letter-spacing causes characters to spread farther apart, while negative values of letter-spacing bring characters closer together.`}
+          {`The line-height CSS property sets the height of a line box. It's commonly used to set the distance between lines of text. On block-level elements, it specifies the minimum height of line boxes within the element. On non-replaced inline elements, it specifies the height that is used to calculate line box height.`}
         </p>
       </ContentLayout.Paragraph>
       <ContentLayout.Options>
         <div>
           <p className="content_title">Options</p>
           <Card>
-            <label htmlFor="length">Length {length}px</label>
-            <Slider id="length" max={30} value={length} onChange={setLength} />
+            <label htmlFor="value">Value {value}</label>
+            <Slider id="value" max={10} step={0.1} value={value} onChange={setValue} />
           </Card>
         </div>
       </ContentLayout.Options>
@@ -31,7 +31,7 @@ const LetterSpacing = () => {
             <div
               style={{
                 minHeight: 200,
-                letterSpacing: length
+                lineHeight: value
               }}
             >
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur amet ipsa laborum, debitis perferendis animi omnis minima vel asperiores eveniet maxime natus repudiandae tempora eum quam, libero optio molestiae mollitia.
@@ -43,7 +43,7 @@ const LetterSpacing = () => {
           <Card>
             <div className="justify-between items-center">
               <code ref={ref}>
-                letter-spacing: {length}px;
+                line-height: {value};
               </code>
               <Button onClick={() => setCopy(ref)} icon={<FaCopy />} />
             </div>
@@ -54,4 +54,4 @@ const LetterSpacing = () => {
   </section>);
 }
 
-export default LetterSpacing;
+export default LineHeight;
