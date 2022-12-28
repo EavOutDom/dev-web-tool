@@ -163,6 +163,103 @@ const data = [
         ],
         type: 'group'
       },
+      {
+        label: 'Text',
+        key: 'text',
+        children: [
+          {
+            label: 'Letter Spacing',
+            key: 'letter-spacing',
+          },
+          {
+            label: 'Line Height',
+            key: 'line-height',
+          },
+          {
+            label: 'Overflow Wrap',
+            key: 'overflow-wrap',
+          },
+          {
+            label: 'Overflow Wrap',
+            key: 'overflow-wrap',
+          },
+          {
+            label: 'Tab Size',
+            key: 'tab-size',
+          },
+          {
+            label: 'Text Align',
+            key: 'text-align',
+          },
+          {
+            label: 'Text Decoration',
+            key: 'text-decoration',
+          },
+          {
+            label: 'Text Indent',
+            key: 'text-indent',
+          },
+          {
+            label: 'Text Shadow',
+            key: 'text-shadow',
+          },
+          {
+            label: 'Text Transform',
+            key: 'text-transform',
+          },
+          {
+            label: 'Word Break',
+            key: 'word-break',
+          },
+          {
+            label: 'Word Space',
+            key: 'word-space',
+          },
+          {
+            label: 'White Space',
+            key: 'white-space',
+          },
+        ],
+        type: 'group'
+      },
+      {
+        label: 'Transform',
+        key: 'transform',
+        children: [
+          {
+            label: 'Perspective',
+            key: 'perspective',
+          },
+          {
+            label: 'Rotate',
+            key: 'rotate',
+          },
+          {
+            label: 'Scale',
+            key: 'scale',
+          },
+          {
+            label: 'Skew',
+            key: 'skew',
+          },
+          {
+            label: 'Translate',
+            key: 'translate',
+          },
+        ],
+        type: 'group'
+      },
+      {
+        label: 'Transition',
+        key: 'transition',
+        children: [
+          {
+            label: 'Transition',
+            key: 'transition',
+          },
+        ],
+        type: 'group'
+      },
     ]
   },
   {
