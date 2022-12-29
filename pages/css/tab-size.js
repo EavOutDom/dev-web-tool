@@ -32,9 +32,15 @@ const TabSize = () => {
         <div>
           <p className="content_title">Preview</p>
           <Card>
-            <pre style={{ minHeight: 200, tabSize: tab, MozTabSize: tab, OTabSize: tab }}>
-              Lorem ipsum dolor sit.
-            </pre>
+            <div style={{ tabSize: tab, width: '100%' }}>
+              <div>
+                <pre>
+                  <div>
+                    Lorem ipsum dolor sit.
+                  </div>
+                </pre>
+              </div>
+            </div>
           </Card>
         </div>
         <div>
