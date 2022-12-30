@@ -56,7 +56,7 @@ const Translate = () => {
           <Card>
             <div className="justify-between items-center">
               <code ref={ref}>
-                transform: {`translate(${x}px, ${y})px`};
+                transform: {`translate(${x}px, ${y}px)`};
               </code>
               <Button onClick={() => setCopy(ref)} icon={<FaCopy />} />
             </div>
