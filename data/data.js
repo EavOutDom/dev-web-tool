@@ -204,12 +204,8 @@ const data = [
             key: 'text-transform',
           },
           {
-            label: 'Word Break',
-            key: 'word-break',
-          },
-          {
-            label: 'Word Space',
-            key: 'word-space',
+            label: 'Word Spacing',
+            key: 'word-spacing',
           },
           {
             label: 'White Space',
