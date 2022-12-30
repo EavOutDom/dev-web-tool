@@ -3,6 +3,7 @@ import ContentLayout from "../../components/contentlayout/ContentLayout";
 import { useRef, useState } from "react";
 import { FaCopy } from "react-icons/fa";
 import { useCopy } from "../../lib/useCopy";
+import ColorPicker from "../../components/colorPicker/ColorPicker";
 
 const TextDecoration = () => {
   const [state, setState] = useState({
@@ -12,6 +13,7 @@ const TextDecoration = () => {
   });
   const [copy, setCopy] = useCopy();
   const ref = useRef();
+
   return (<section>
     <ContentLayout name='Text Decoration' back="/css" >
       <ContentLayout.Paragraph>
@@ -34,10 +36,17 @@ const TextDecoration = () => {
             <label htmlFor="style">Style</label>
             <Select id="style" style={{ width: '100%' }} value={state.style} onChange={e => setState(p => ({ ...p, style: e }))}>
               <Select.Option value='solid'>solid</Select.Option>
-              <Select.Option value='underline'>underline</Select.Option>
-              <Select.Option value='overline'>overline</Select.Option>
-              <Select.Option value='line-through'>line-through</Select.Option>
+              <Select.Option value='double'>double</Select.Option>
+              <Select.Option value='dotted'>dotted</Select.Option>
+              <Select.Option value='dashed'>dashed</Select.Option>
+              <Select.Option value='wavy'>wavy</Select.Option>
             </Select>
+            <Divider dashed />
+            <label htmlFor="color">Color</label>
+            <div id="color" className="items-center justify-between">
+              <ColorPicker colorInput width={120} color={state.color} onChange={e => setState(p => ({ ...p, color: e }))} />
+              <span>{state.color}</span>
+            </div>
           </Card>
         </div>
       </ContentLayout.Options>
@@ -57,7 +66,7 @@ const TextDecoration = () => {
           <Card>
             <div className="justify-between items-center">
               <code ref={ref}>
-                textDecoration: {`"${state.line} ${state.style} ${state.color}"`}
+                textDecoration: {`${state.line} ${state.style} ${state.color}`}
               </code>
               <Button onClick={() => setCopy(ref)} icon={<FaCopy />} />
             </div>
