@@ -20,7 +20,7 @@ const TextTransform = () => {
         <div>
           <p className="content_title">Options</p>
           <Card>
-            <label htmlFor="tt">Value {value}</label>
+            <label htmlFor="tt">Value</label>
             <Select style={{ width: '100%' }} id='tt' value={value} onChange={setValue}>
               <Select.Option value='capitalize'>capitalize</Select.Option>
               <Select.Option value='none'>none</Select.Option>
