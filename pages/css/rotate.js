@@ -82,7 +82,7 @@ const Rotate = () => {
           <Card>
             <div className="justify-between items-center">
               <code ref={ref}>
-
+                transform: {transformRotate()};
               </code>
               <Button onClick={() => setCopy(ref)} icon={<FaCopy />} />
             </div>
