@@ -13,14 +13,15 @@ const Translate = () => {
     delay: 0,
     timeFun: 'ease',
   });
-  const [start, setStart] = useState('100');
+  const [start, setStart] = useState(100);
+  const [end, setEnd] = useState(60);
   const [startEnd, setStartEnd] = useState(null);
   const [copy, setCopy] = useCopy();
   const ref = useRef();
 
   useEffect(() => {
     if (state.type === 'opacity') {
-      setStartEnd(<Opacity start={start} setStart={setStart} />);
+      setStartEnd(<Opacity start={start} setStart={setStart} end={end} setEnd={setEnd} />);
     } else if (state.type === 'background') {
       setStartEnd(<Background start={start} setStart={setStart} />)
     } else if (state.type === 'outline') {
@@ -31,7 +32,7 @@ const Translate = () => {
       setStartEnd(<Width {...state} setState={setState} />)
     }
   }, [state.type]);
-  console.log('parent', start);
+
   return (<section>
     <ContentLayout name='Transition' back="/css" >
       <ContentLayout.Paragraph>
@@ -109,10 +110,13 @@ const Translate = () => {
 }
 
 
-const Opacity = ({ start, setStart }) => {
-
+const Opacity = ({ start, end, setStart, setEnd }) => {
   return (<>
-    <h1>Opacity</h1>
+    <label htmlFor="start">Start Opacity {start}%</label>
+    <Slider id='start' value={start} onChange={e => setStart(e)} />
+    <Divider dashed />
+    <label htmlFor="end">End Opacity {end}%</label>
+    <Slider id='end' value={end} onChange={setEnd} />
   </>)
 };
 
