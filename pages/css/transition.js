@@ -4,12 +4,16 @@ import { useEffect, useRef, useState } from "react";
 import { FaCopy } from "react-icons/fa";
 import { useCopy } from "../../lib/useCopy";
 import ColorPicker from "../../components/colorPicker/ColorPicker";
+import timingFunction from "../../data/timingFunction";
 
 const Translate = () => {
   const [x, setX] = useState(1)
   const [y, setY] = useState(1)
   const [state, setState] = useState({
-    type: 'opacity'
+    type: 'opacity',
+    duration: 0.3,
+    delay: 0,
+    timeFun: 'ease',
   });
   const [copy, setCopy] = useCopy();
   const ref = useRef();
@@ -17,14 +21,15 @@ const Translate = () => {
   useEffect(() => {
     switch (state.type) {
       case 'opacity':
-        setState(p => ({ ...p, start: 100, end: 60 }));
+        setState(p => ({ ...p, start: '100', end: '60' }));
       case 'background-color':
         setState(p => ({ ...p, start: '#ff3434', end: '#ffe1d5' }));
       default:
-        setState(p => ({ ...p, start: 100, end: 60 }));
+        setState(p => ({ ...p, start: '100', end: '60' }));
     }
   }, [state.type]);
 
+  const findValue = (arr, data) => arr.find(i => i.value === data).data;
 
   return (<section>
     <ContentLayout name='Transition' back="/css" >
@@ -45,14 +50,23 @@ const Translate = () => {
               <Select.Option value='height'>height</Select.Option>
               <Select.Option value='width'>width</Select.Option>
             </Select>
-            <Divider />
+            <Divider dashed />
             <StartToEnd state={state} setState={setState} />
-            {/* {state.type === 'opacity' && <>
-              <label htmlFor="start">Start</label>
-              <Slider id="start" value={state.start} tooltip={{ open: state.start, placement: 'right' }} onChange={e => setState(p => ({ ...p, start: e }))} />
-              <label htmlFor="end">End</label>
-              <Slider id="end" value={state.end} tooltip={{ open: state.end, placement: 'right' }} onChange={e => setState(p => ({ ...p, end: e }))} />
-            </>} */}
+            <Divider dashed />
+            <label htmlFor="duration">Duration ({state.duration}s)</label>
+            <Slider id="duration" step={0.1} max={5} value={state.duration} onChange={e => setState(p => ({ ...p, duration: e }))} />
+            <Divider dashed />
+            <label htmlFor="function">Timing Function</label>
+            <Select
+              id="function"
+              style={{ width: '100%' }}
+              value={state.timeFun}
+              onChange={e => setState(p => ({ ...p, timeFun: e }))}
+              options={timingFunction}
+            />
+            <Divider dashed />
+            <label htmlFor="delay">Delay ({state.delay}s)</label>
+            <Slider id="delay" step={0.1} max={5} value={state.delay} onChange={e => setState(p => ({ ...p, delay: e }))} />
           </Card>
         </div>
       </ContentLayout.Options>
@@ -95,11 +109,11 @@ const Translate = () => {
 }
 
 const StartToEnd = ({ state, setState }) => {
-  console.log(state);
   if (state.type === 'opacity') {
     return <div>
       <label htmlFor="start">Start</label>
       <Slider id="start" value={state.start} tooltip={{ open: state.start, placement: 'right' }} onChange={e => setState(p => ({ ...p, start: e }))} />
+      <Divider dashed />
       <label htmlFor="end">End</label>
       <Slider id="end" value={state.end} tooltip={{ open: state.end, placement: 'right' }} onChange={e => setState(p => ({ ...p, end: e }))} />
     </div>
