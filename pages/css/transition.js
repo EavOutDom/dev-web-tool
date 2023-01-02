@@ -23,9 +23,23 @@ const Translate = () => {
   const hoverRef = useRef();
   const _hoverRef = useRef();
 
+  const defaultProperties = {
+    opacity: 1,
+    background: '#a0a0a0',
+    height: 50,
+    height: '200px',
+    width: '200px',
+  }
   useEffect(() => {
-    if (state.type === 'opacity') {
-      hoverRef.current.style.opacity = start_tr / 100;
+    for (const prop in defaultProperties) {
+      if (state.type === prop) {
+        if (state.type === 'height' || state.type === 'width') {
+          hoverRef.current.style[prop] = start_tr + 'px';
+        }
+        hoverRef.current.style[prop] = start_tr;
+      } else {
+        hoverRef.current.style[prop] = defaultProperties[prop];
+      }
     }
   }, [start_tr]);
 
@@ -34,8 +48,6 @@ const Translate = () => {
       setStartEnd(<Opacity />);
     } else if (state.type === 'background') {
       setStartEnd(<Background />)
-    } else if (state.type === 'outline') {
-      setStartEnd(<Outline />)
     } else if (state.type === 'height') {
       setStartEnd(<Height />)
     } else if (state.type === 'width') {
@@ -44,17 +56,19 @@ const Translate = () => {
   }, [state.type]);
 
   const onEnter = () => {
-    if (state.type === 'opacity') {
-      hoverRef.current.style[state.type] = end_tr / 100;
+    if (state.type === 'height' || state.type === 'width') {
+      hoverRef.current.style[state.type] = end_tr + 'px';
     }
+    hoverRef.current.style[state.type] = end_tr;
   };
 
   const onLeave = () => {
-    if (state.type === 'opacity') {
-      hoverRef.current.style[state.type] = start_tr / 100;
+    if (state.type === 'height' || state.type === 'width') {
+      hoverRef.current.style[state.type] = start_tr + 'px';
     }
-  };
+    hoverRef.current.style[state.type] = start_tr;
 
+  };
   useEffect(() => {
     const hover = hoverRef.current;
     if (hover) {
@@ -85,7 +99,6 @@ const Translate = () => {
             <Select id="type" style={{ width: '100%' }} value={state.type} onChange={e => setState(p => ({ ...p, type: e }))}>
               <Select.Option value='opacity'>opacity</Select.Option>
               <Select.Option value='background'>background-color</Select.Option>
-              <Select.Option value='outline'>outline</Select.Option>
               <Select.Option value='height'>height</Select.Option>
               <Select.Option value='width'>width</Select.Option>
             </Select>
@@ -141,7 +154,7 @@ const Translate = () => {
               <pre style={{ whiteSpace: 'pre-wrap' }}>
                 <code ref={ref}>
                   {`.element {
-  ${state.type}: ${start_tr / 100};
+  ${state.type}: ${start_tr + ((state.type === 'height' || state.type === 'width') && 'px')};
   transition: ${state.type} ${state.duration}s ${state.timeFun} ${state.delay}s;                   
 }`}
                 </code>
@@ -155,7 +168,7 @@ const Translate = () => {
               <pre style={{ whiteSpace: 'pre-wrap' }}>
                 <code ref={pseudoRef}>
                   {`.element:hover {
-  ${state.type}: ${end_tr / 100};
+  ${state.type}: ${end_tr + ((state.type === 'height' || state.type === 'width') && 'px')};
 }`}
                 </code>
               </pre>
@@ -172,45 +185,94 @@ const Translate = () => {
 const Opacity = () => {
   const { appState: { start_tr, end_tr }, appDispatch } = useContext(AppContext);
   useEffect(() => {
-    appDispatch({ type: 'START_TRANSITION', payload: 100 });
-    appDispatch({ type: 'END_TRANSITION', payload: 60 });
+    appDispatch({ type: 'START_TRANSITION', payload: 1 });
+    appDispatch({ type: 'END_TRANSITION', payload: 0.6 });
   }, [])
 
   return (<>
-    <label htmlFor="start">Start Opacity {start_tr}%</label>
-    <Slider id='start' value={start_tr} onChange={e => appDispatch({ type: 'START_TRANSITION', payload: e })} />
+    <label htmlFor="start">Start Opacity {start_tr}</label>
+    <Slider id='start' value={start_tr} step={0.01} max={1} onChange={e => appDispatch({ type: 'START_TRANSITION', payload: e })} />
     <Divider dashed />
-    <label htmlFor="end">End Opacity {end_tr}%</label>
-    <Slider id='end' value={end_tr} onChange={e => appDispatch({ type: 'END_TRANSITION', payload: e })} />
+    <label htmlFor="end">End Opacity {end_tr}</label>
+    <Slider id='end' value={end_tr} step={0.01} max={1} onChange={e => appDispatch({ type: 'END_TRANSITION', payload: e })} />
   </>)
 };
 
 const Background = () => {
   const { appState: { start_tr, end_tr }, appDispatch } = useContext(AppContext);
   useEffect(() => {
-    appDispatch({ type: 'START_TRANSITION', payload: '#ddd' });
-    appDispatch({ type: 'END_TRANSITION', payload: '#000' });
-  }, [])
-  return (<>
-    <h1>{start_tr} {end_tr}</h1>
-  </>)
-};
+    appDispatch({ type: 'START_TRANSITION', payload: '#833ab4' });
+    appDispatch({ type: 'END_TRANSITION', payload: '#fd1d1d' });
+  }, []);
 
-const Outline = () => {
+  const handleChangeStartColor = (value) => {
+    appDispatch({ type: 'START_TRANSITION', payload: value });
+  };
+
+  const handleChangeEndColor = (e) => {
+    appDispatch({ type: 'END_TRANSITION', payload: e });
+  };
+
   return (<>
-    <h1>Outline</h1>
+    <label htmlFor="start">Start Color</label>
+    <div className="items-center justify-between" style={{ gap: 10 }}>
+      {typeof start_tr === 'string' && <ColorPicker colorInput color={start_tr} onChange={handleChangeStartColor} />}
+      <label>{start_tr}</label>
+    </div>
+    <Divider dashed />
+    <label htmlFor="end">End Color</label>
+    <div className="items-center justify-between" style={{ gap: 10 }}>
+      {typeof end_tr === 'string' && <ColorPicker colorInput color={end_tr} onChange={handleChangeEndColor} />}
+      <label>{end_tr}</label>
+    </div>
   </>)
 };
 
 const Height = () => {
+  const { appState: { start_tr, end_tr }, appDispatch } = useContext(AppContext);
+  useEffect(() => {
+    appDispatch({ type: 'START_TRANSITION', payload: '100' });
+    appDispatch({ type: 'END_TRANSITION', payload: '200' });
+  }, []);
+
+  const handleChangeStartColor = (value) => {
+    appDispatch({ type: 'START_TRANSITION', payload: value });
+  };
+
+  const handleChangeEndColor = (e) => {
+    appDispatch({ type: 'END_TRANSITION', payload: e });
+  };
+
   return (<>
-    <h1>Height</h1>
+    <label htmlFor="start">Start Height {start_tr}px</label>
+    <Slider id="start" max={400} value={start_tr} onChange={handleChangeStartColor} />
+    <Divider dashed />
+    <label htmlFor="start">End Height {end_tr}px</label>
+    <Slider id="start" max={400} value={end_tr} onChange={handleChangeEndColor} />
   </>)
 };
 
 const Width = () => {
+  const { appState: { start_tr, end_tr }, appDispatch } = useContext(AppContext);
+  useEffect(() => {
+    appDispatch({ type: 'START_TRANSITION', payload: '200' });
+    appDispatch({ type: 'END_TRANSITION', payload: '300' });
+  }, []);
+
+  const handleChangeStartColor = (value) => {
+    appDispatch({ type: 'START_TRANSITION', payload: value });
+  };
+
+  const handleChangeEndColor = (e) => {
+    appDispatch({ type: 'END_TRANSITION', payload: e });
+  };
+
   return (<>
-    <h1>Width</h1>
+    <label htmlFor="start">Start Width {start_tr}px</label>
+    <Slider id="start" max={400} value={start_tr} onChange={handleChangeStartColor} />
+    <Divider dashed />
+    <label htmlFor="start">End Wight {end_tr}px</label>
+    <Slider id="start" max={400} value={end_tr} onChange={handleChangeEndColor} />
   </>)
 };
 
