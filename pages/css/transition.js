@@ -1,52 +1,55 @@
 import { Button, Card, Divider, Select, Slider } from "antd";
 import ContentLayout from "../../components/contentlayout/ContentLayout";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { FaCopy } from "react-icons/fa";
 import { useCopy } from "../../lib/useCopy";
 import ColorPicker from "../../components/colorPicker/ColorPicker";
 import timingFunction from "../../data/timingFunction";
+import { AppContext } from "../../store/AppContext";
 
 const Translate = () => {
+  const { appState: { start_tr, end_tr }, appDispatch } = useContext(AppContext);
+
   const [state, setState] = useState({
     type: 'opacity',
     duration: 0.3,
     delay: 0,
     timeFun: 'ease',
   });
-  const [start, setStart] = useState(100);
-  const [end, setEnd] = useState(60);
   const [startEnd, setStartEnd] = useState(null);
-  const [hover, setHover] = useState(false);
   const [copy, setCopy] = useCopy();
   const ref = useRef();
   const hoverRef = useRef();
   const _hoverRef = useRef();
 
   useEffect(() => {
+    hoverRef.current.style.opacity = start_tr / 100;
+  }, [start_tr]);
+
+  useEffect(() => {
     if (state.type === 'opacity') {
-      setStartEnd(<Opacity start={start} setStart={setStart} end={end} setEnd={setEnd} />);
+      setStartEnd(<Opacity />);
     } else if (state.type === 'background') {
-      setStartEnd(<Background start={start} setStart={setStart} />)
+      setStartEnd(<Background />)
     } else if (state.type === 'outline') {
-      setStartEnd(<Outline {...state} setState={setState} />)
+      setStartEnd(<Outline />)
     } else if (state.type === 'height') {
-      setStartEnd(<Height {...state} setState={setState} />)
+      setStartEnd(<Height />)
     } else if (state.type === 'width') {
-      setStartEnd(<Width {...state} setState={setState} />)
+      setStartEnd(<Width />)
     }
   }, [state.type]);
 
   const onEnter = () => {
-    hoverRef.current.style[state.type] = end / 100;
+    hoverRef.current.style[state.type] = end_tr / 100;
   };
 
   const onLeave = () => {
-    hoverRef.current.style[state.type] = start / 100;
+    hoverRef.current.style[state.type] = start_tr / 100;
   };
 
   useEffect(() => {
-    const hover = hoverRef.current
-    hoverRef.current.style[state.type] = start / 100;
+    const hover = hoverRef.current;
     if (hover) {
       _hoverRef.current = hover;
       hover.addEventListener("mouseenter", onEnter);
@@ -80,7 +83,7 @@ const Translate = () => {
               <Select.Option value='width'>width</Select.Option>
             </Select>
             <Divider dashed />
-            {startEnd !== null && startEnd}
+            {start_tr === null ? <Opacity /> : startEnd}
             <Divider dashed />
             <label htmlFor="duration">Duration ({state.duration}s)</label>
             <Slider id="duration" step={0.1} max={5} value={state.duration} onChange={e => setState(p => ({ ...p, duration: e }))} />
@@ -139,23 +142,30 @@ const Translate = () => {
 }
 
 
-const Opacity = ({ start, end, setStart, setEnd }) => {
+const Opacity = () => {
+  const { appState: { start_tr, end_tr }, appDispatch } = useContext(AppContext);
+  useEffect(() => {
+    appDispatch({ type: 'START_TRANSITION', payload: 100 });
+    appDispatch({ type: 'END_TRANSITION', payload: 60 });
+  }, [])
+
   return (<>
-    <label htmlFor="start">Start Opacity {start}%</label>
-    <Slider id='start' value={start} onChange={e => setStart(e)} />
+    <label htmlFor="start">Start Opacity {start_tr}%</label>
+    <Slider id='start' value={start_tr} onChange={e => appDispatch({ type: 'START_TRANSITION', payload: e })} />
     <Divider dashed />
-    <label htmlFor="end">End Opacity {end}%</label>
-    <Slider id='end' value={end} onChange={setEnd} />
+    <label htmlFor="end">End Opacity {end_tr}%</label>
+    <Slider id='end' value={end_tr} onChange={e => appDispatch({ type: 'END_TRANSITION', payload: e })} />
   </>)
 };
 
-const Background = ({ start, setStart }) => {
+const Background = () => {
+  const { appState: { start_tr, end_tr }, appDispatch } = useContext(AppContext);
   useEffect(() => {
-    setStart('#ffff');
-  }, []);
-  console.log('child', start);
+    appDispatch({ type: 'START_TRANSITION', payload: '#ddd' });
+    appDispatch({ type: 'END_TRANSITION', payload: '#000' });
+  }, [])
   return (<>
-    <h1>Back</h1>
+    <h1>{start_tr} {end_tr}</h1>
   </>)
 };
 

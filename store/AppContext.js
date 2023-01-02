@@ -7,6 +7,8 @@ const AppContextProvider = ({ children }) => {
   const [appState, appDispatch] = useReducer(appReducer, {
     dark: null,
     loading: false,
+    start_tr: 100,
+    end_tr: 60
   });
 
   useEffect(() => {
