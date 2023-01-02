@@ -18,9 +18,11 @@ export const appReducer = (state, { type, payload }) => {
     case 'SET_DARK':
       if (payload) {
         localStorage.setItem('darkMode', payload);
-        document.documentElement.classList.add('dark')
+        // document.body.dataset.dark = "on";
+        document.documentElement.setAttribute("data-theme", "dark");
       } else {
-        document.documentElement.classList.remove('dark')
+        // document.body.dataset.dark = "off";
+        document.documentElement.setAttribute("data-theme", "light");
         localStorage.removeItem('darkMode');
       }
       return {
