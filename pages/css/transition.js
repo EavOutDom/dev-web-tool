@@ -1,6 +1,6 @@
 import { Button, Card, Divider, Select, Slider } from "antd";
 import ContentLayout from "../../components/contentlayout/ContentLayout";
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { FaCopy } from "react-icons/fa";
 import { useCopy } from "../../lib/useCopy";
 import ColorPicker from "../../components/colorPicker/ColorPicker";
@@ -20,8 +20,7 @@ const Translate = () => {
   const [copy, setCopy] = useCopy();
   const ref = useRef();
   const hoverRef = useRef();
-
-
+  const _hoverRef = useRef();
 
   useEffect(() => {
     if (state.type === 'opacity') {
@@ -37,13 +36,29 @@ const Translate = () => {
     }
   }, [state.type]);
 
-  const handleMouseEnter = () => {
+  const onEnter = () => {
     hoverRef.current.style[state.type] = end / 100;
-  }
+  };
 
-  const handleMouseLeave = () => {
+  const onLeave = () => {
     hoverRef.current.style[state.type] = start / 100;
-  }
+  };
+
+  useEffect(() => {
+    const hover = hoverRef.current
+    hoverRef.current.style[state.type] = start / 100;
+    if (hover) {
+      _hoverRef.current = hover;
+      hover.addEventListener("mouseenter", onEnter);
+      hover.addEventListener("mouseleave", onLeave);
+    }
+    return () => {
+      if (_hoverRef.current) {
+        _hoverRef.current.removeEventListener("mouseenter", onEnter);
+        _hoverRef.current.removeEventListener("mouseleave", onLeave);
+      }
+    };
+  }, []);
 
   return (<section>
     <ContentLayout name='Transition' back="/css" >
@@ -96,8 +111,6 @@ const Translate = () => {
             >
               <div
                 ref={hoverRef}
-                onMouseEnter={handleMouseEnter}
-                onMouseLeave={handleMouseLeave}
                 style={{
                   width: 200,
                   height: 200,
