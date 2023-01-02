@@ -55,7 +55,7 @@ const BackgroundGradient = () => {
         <div>
           <p className="content_title">Code</p>
           <Card>
-            <div className="justify-between item  s-center">
+            <div className="justify-between items-center">
               <code ref={ref}>
                 background: {color};
               </code>

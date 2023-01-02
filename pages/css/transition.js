@@ -19,11 +19,14 @@ const Translate = () => {
   const [startEnd, setStartEnd] = useState(null);
   const [copy, setCopy] = useCopy();
   const ref = useRef();
+  const pseudoRef = useRef();
   const hoverRef = useRef();
   const _hoverRef = useRef();
 
   useEffect(() => {
-    hoverRef.current.style.opacity = start_tr / 100;
+    if (state.type === 'opacity') {
+      hoverRef.current.style.opacity = start_tr / 100;
+    }
   }, [start_tr]);
 
   useEffect(() => {
@@ -41,11 +44,15 @@ const Translate = () => {
   }, [state.type]);
 
   const onEnter = () => {
-    hoverRef.current.style[state.type] = end_tr / 100;
+    if (state.type === 'opacity') {
+      hoverRef.current.style[state.type] = end_tr / 100;
+    }
   };
 
   const onLeave = () => {
-    hoverRef.current.style[state.type] = start_tr / 100;
+    if (state.type === 'opacity') {
+      hoverRef.current.style[state.type] = start_tr / 100;
+    }
   };
 
   useEffect(() => {
@@ -61,7 +68,7 @@ const Translate = () => {
         _hoverRef.current.removeEventListener("mouseleave", onLeave);
       }
     };
-  }, []);
+  }, [start_tr, end_tr]);
 
   return (<section>
     <ContentLayout name='Transition' back="/css" >
@@ -128,11 +135,31 @@ const Translate = () => {
         </div>
         <div>
           <p className="content_title">Code</p>
+          <p>Copy this to the main element</p>
           <Card>
-            <div className="justify-between items-center">
-              <code ref={ref}>
-              </code>
+            <div className="justify-between">
+              <pre style={{ whiteSpace: 'pre-wrap' }}>
+                <code ref={ref}>
+                  {`.element {
+  ${state.type}: ${start_tr / 100};
+  transition: ${state.type} ${state.duration}s ${state.timeFun} ${state.delay}s;                   
+}`}
+                </code>
+              </pre>
               <Button onClick={() => setCopy(ref)} icon={<FaCopy />} />
+            </div>
+          </Card>
+          <p>Copy this to the transitioned element or pseudo-element</p>
+          <Card>
+            <div className="justify-between">
+              <pre style={{ whiteSpace: 'pre-wrap' }}>
+                <code ref={pseudoRef}>
+                  {`.element:hover {
+  ${state.type}: ${end_tr / 100};
+}`}
+                </code>
+              </pre>
+              <Button onClick={() => setCopy(pseudoRef)} icon={<FaCopy />} />
             </div>
           </Card>
         </div>
