@@ -16,8 +16,12 @@ const Translate = () => {
   const [start, setStart] = useState(100);
   const [end, setEnd] = useState(60);
   const [startEnd, setStartEnd] = useState(null);
+  const [hover, setHover] = useState(false);
   const [copy, setCopy] = useCopy();
   const ref = useRef();
+  const hoverRef = useRef();
+
+
 
   useEffect(() => {
     if (state.type === 'opacity') {
@@ -32,6 +36,14 @@ const Translate = () => {
       setStartEnd(<Width {...state} setState={setState} />)
     }
   }, [state.type]);
+
+  const handleMouseEnter = () => {
+    hoverRef.current.style[state.type] = end / 100;
+  }
+
+  const handleMouseLeave = () => {
+    hoverRef.current.style[state.type] = start / 100;
+  }
 
   return (<section>
     <ContentLayout name='Transition' back="/css" >
@@ -82,13 +94,18 @@ const Translate = () => {
                 minHeight: 200,
               }}
             >
-              <div style={{
-                width: 200,
-                background: '#a0a0a0',
-                textAlign: 'center',
-                // transform: `translate(${x}px, ${y}px)`,
-              }}>
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eos natus sed vel error distinctio nemo explicabo perferendis, voluptates ipsa consequatur deleniti debitis. Itaque vitae expedita consequuntur recusandae delectus, voluptatum id.
+              <div
+                ref={hoverRef}
+                onMouseEnter={handleMouseEnter}
+                onMouseLeave={handleMouseLeave}
+                style={{
+                  width: 200,
+                  height: 200,
+                  background: '#a0a0a0',
+                  textAlign: 'center',
+                  transition: `${state.type} ${state.duration}s ${state.timeFun} ${state.delay}s`
+                }}>
+                hover here to preview
               </div>
             </div>
           </Card>
@@ -98,7 +115,6 @@ const Translate = () => {
           <Card>
             <div className="justify-between items-center">
               <code ref={ref}>
-                {/* transform: {`translate(${x}px, ${y})px`}; */}
               </code>
               <Button onClick={() => setCopy(ref)} icon={<FaCopy />} />
             </div>
