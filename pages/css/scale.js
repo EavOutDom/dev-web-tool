@@ -4,6 +4,14 @@ import { useRef, useState } from "react";
 import { FaCopy } from "react-icons/fa";
 import { useCopy } from "../../lib/useCopy";
 
+export const getServerSideProps = () => {
+  return {
+    props: {
+      meta_title: 'Scale'
+    }
+  }
+};
+
 const Scale = () => {
   const [scale, setScale] = useState(1);
   const [x, setX] = useState(1)

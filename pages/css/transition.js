@@ -7,6 +7,14 @@ import ColorPicker from "../../components/colorPicker/ColorPicker";
 import timingFunction from "../../data/timingFunction";
 import { AppContext } from "../../store/AppContext";
 
+export const getServerSideProps = () => {
+  return {
+    props: {
+      meta_title: 'Transition'
+    }
+  }
+};
+
 const Translate = () => {
   const { appState: { start_tr, end_tr }, appDispatch } = useContext(AppContext);
 

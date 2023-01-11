@@ -4,6 +4,14 @@ import { useRef, useState } from "react";
 import { FaCopy } from "react-icons/fa";
 import { useCopy } from "../../lib/useCopy";
 
+export const getServerSideProps = () => {
+  return {
+    props: {
+      meta_title: 'Visibility'
+    }
+  }
+};
+
 const Visibility = () => {
   const [value, setValue] = useState('visible');
   const ref = useRef('');

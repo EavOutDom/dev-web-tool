@@ -4,6 +4,14 @@ import { useRef, useState } from "react";
 import { FaCopy } from "react-icons/fa";
 import { useCopy } from "../../lib/useCopy";
 
+export const getServerSideProps = () => {
+  return {
+    props: {
+      meta_title: 'List Style'
+    }
+  }
+};
+
 const ListStyle = () => {
   const [type, setType] = useState('square');
   const [position, setPosition] = useState('inside');

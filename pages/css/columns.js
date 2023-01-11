@@ -4,7 +4,15 @@ import { useRef, useState } from "react";
 import { FaCopy } from "react-icons/fa";
 import { useCopy } from "../../lib/useCopy";
 
-const Sepia = () => {
+export const getServerSideProps = () => {
+  return {
+    props: {
+      meta_title: 'Columns'
+    }
+  }
+};
+
+const Columns = () => {
   const [number, setNumber] = useState(1);
   const [copy, setCopy] = useCopy();
   const ref = useRef();
@@ -56,23 +64,27 @@ const Sepia = () => {
         <Col xs={24} md={12}>
           <Card title='HTML'>
             <div align='left'>
-              <code>
-                <span style={{ display: 'block' }}>{`<p class='columns'>`}</span>
-                <span>This is a bunch of text split into three columns using the CSS `column-count` property. The text is equally distributed over the columns.</span>
-                <span style={{ display: 'block' }}>{`</p>`}</span>
-              </code>
+              <pre>
+                <code>
+                  {`<p class='columns'>
+  This is a bunch of text split into three columns using the CSS "column-count" property. The text is equally distributed over the columns.
+</p>`}
+                </code>
+              </pre>
             </div>
           </Card>
         </Col>
         <Col xs={24} md={12}>
           <Card title='CSS'>
-            <code>
-              <div align='left'>
-                <span style={{ display: 'block' }}>{`.columns {`}</span>
-                <span style={{ display: 'block' }}>column-count: 3;</span>
-                <span>{`}`}</span>
-              </div>
-            </code>
+            <pre>
+              <code>
+                <div align='left'>
+                  {`.columns {
+  column-count: 3;
+}`}
+                </div>
+              </code>
+            </pre>
           </Card>
         </Col>
         <div align='middle'>
@@ -87,4 +99,4 @@ const Sepia = () => {
   </section >);
 }
 
-export default Sepia;
+export default Columns;

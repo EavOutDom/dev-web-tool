@@ -5,6 +5,14 @@ import ColorPicker from "../../components/colorPicker/ColorPicker";
 import { FaCopy } from "react-icons/fa";
 import { useCopy } from "../../lib/useCopy";
 
+export const getServerSideProps = async () => {
+  return {
+    props: {
+      meta_title: 'Border',
+    }
+  }
+};
+
 const Border = () => {
   const [copyText, setCopy] = useCopy();
   const borderRef = useRef('');

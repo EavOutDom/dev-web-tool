@@ -4,6 +4,14 @@ import { useRef, useState } from "react";
 import { useCopy } from "../../lib/useCopy";
 import { FaCopy } from "react-icons/fa";
 
+export const getServerSideProps = () => {
+  return {
+    props: {
+    meta_title: 'White Space'
+    }
+  }
+};
+
 const WhiteSpace = () => {
   const [value, setValue] = useState('normal');
   const [copy, setCopy] = useCopy('');

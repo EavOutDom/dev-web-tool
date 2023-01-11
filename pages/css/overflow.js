@@ -4,6 +4,14 @@ import { Button, Card, Divider, Select } from "antd";
 import { FaCopy } from "react-icons/fa";
 import { useCopy } from "../../lib/useCopy";
 
+export const getServerSideProps = () => {
+  return {
+    props: {
+      meta_title: 'Overflow'
+    }
+  }
+};
+
 const Overflow = () => {
   const [type, setType] = useState('overflow');
   const [overflow, setOverflow] = useState('auto');

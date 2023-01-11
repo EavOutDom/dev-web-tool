@@ -6,6 +6,14 @@ import { AiFillRightSquare } from "react-icons/ai";
 import data from "../../data/data";
 import styles from './html.module.css';
 
+export const getServerSideProps = () => {
+  return {
+    props: {
+      meta_title: 'HTMl'
+    }
+  }
+};
+
 const HTMLPage = () => {
   return (<>
     <Head>

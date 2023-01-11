@@ -5,6 +5,14 @@ import ColorPicker from "../../components/colorPicker/ColorPicker";
 import { useCopy } from "../../lib/useCopy";
 import { FaCopy } from "react-icons/fa";
 
+export const getServerSideProps = async () => {
+  return {
+    props: {
+      meta_title: 'Text Color'
+    }
+  }
+};
+
 const TextColor = () => {
   const [color, setColor] = useState('#000FF0');
   const [copyText, setCopy] = useCopy();
@@ -17,7 +25,7 @@ const TextColor = () => {
           {`The color CSS property sets the foreground color value of an element's text and text decorations, and sets the currentcolor value. currentcolor may be used as an indirect value on other properties and is the default for other color properties, such as border-color.`}
         </p>
       </ContentLayout.Paragraph>
-    <ContentLayout.Options>
+      <ContentLayout.Options>
         <div>
           <p className="content_title">Options</p>
           <Card>

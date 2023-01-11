@@ -5,8 +5,14 @@ import { AiFillDelete } from 'react-icons/ai';
 import ColorPicker from "../../components/colorPicker/ColorPicker";
 import { FaCopy } from "react-icons/fa";
 import { useCopy } from "../../lib/useCopy";
-import boxShadowEx from "../../data/boxShadow";
-import styles from './css.module.css';
+
+export const getServerSideProps = () => {
+  return {
+    props: {
+      meta_title: 'Text Shadow'
+    }
+  }
+};
 
 const TextShadow = () => {
   const shadowRef = useRef('');

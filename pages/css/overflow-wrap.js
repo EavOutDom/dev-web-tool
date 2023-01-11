@@ -4,6 +4,14 @@ import { useRef, useState } from "react";
 import { FaCopy } from "react-icons/fa";
 import { useCopy } from "../../lib/useCopy";
 
+export const getServerSideProps = () => {
+  return {
+    props: {
+      meta_title: 'Overflow Wrap'
+    }
+  }
+};
+
 const OverflowWrap = () => {
   const [value, setValue] = useState('normal');
   const [copy, setCopy] = useCopy();

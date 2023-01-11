@@ -4,6 +4,14 @@ import { useRef, useState } from "react";
 import { FaCopy } from "react-icons/fa";
 import { useCopy } from "../../lib/useCopy";
 
+export const getServerSideProps = () => {
+  return {
+    props: {
+      meta_title: 'Translate'
+    }
+  }
+};
+
 const Translate = () => {
   const [x, setX] = useState(1)
   const [y, setY] = useState(1)

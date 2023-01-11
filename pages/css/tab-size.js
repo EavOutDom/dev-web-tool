@@ -4,6 +4,14 @@ import { useRef, useState } from "react";
 import { useCopy } from "../../lib/useCopy";
 import { FaCopy } from "react-icons/fa";
 
+export const getServerSideProps = () => {
+  return {
+    props: {
+      meta_title: 'Tab Size'
+    }
+  }
+};
+
 const TabSize = () => {
   const [tab, setTab] = useState(3);
   const [copy, setCopy] = useCopy('');

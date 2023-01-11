@@ -2,6 +2,14 @@ import { Segmented, Tabs } from "antd";
 import ContentLayout from "../../components/contentlayout/ContentLayout";
 import { useState } from "react";
 
+export const getServerSideProps = async () => {
+  return {
+    props: {
+      meta_title: 'Keyframe Animation'
+    }
+  }
+}
+
 const KeyframeAnimation = () => {
   const [state, setState] = useState({
     tabs: 'attention',

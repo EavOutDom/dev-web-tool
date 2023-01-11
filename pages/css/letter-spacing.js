@@ -4,6 +4,14 @@ import { useRef, useState } from "react";
 import { useCopy } from "../../lib/useCopy";
 import { FaCopy } from "react-icons/fa";
 
+export const getServerSideProps = () => {
+  return {
+    props: {
+      meta_title: 'Letter Spacing'
+    }
+  }
+};
+
 const LetterSpacing = () => {
   const [length, setLength] = useState(5);
   const [copy, setCopy] = useCopy('');

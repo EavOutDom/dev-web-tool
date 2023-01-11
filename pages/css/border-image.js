@@ -4,6 +4,14 @@ import { useRef, useState } from "react";
 import { FaCopy } from "react-icons/fa";
 import { useCopy } from "../../lib/useCopy";
 
+export const getServerSideProps = async () => {
+  return {
+    props: {
+      meta_title: "Border Image"
+    }
+  }
+};
+
 const BorderImage = () => {
   const borderRef = useRef('');
   const [copyText, setCopy] = useCopy();
@@ -75,7 +83,7 @@ const BorderImage = () => {
                 border: {state.width + 'px solid'};{'\n'}
                 border-image: url(`${state.imgUrl}`) {state.slice} / {state.width}px / {state.outset}px {state.repeat};
               </code>
-              <Button onClick={() => setCopy(borderRef)} icon={<FaCopy />}/>
+              <Button onClick={() => setCopy(borderRef)} icon={<FaCopy />} />
             </div>
           </Card>
         </div>

@@ -8,9 +8,6 @@ import ContentLayout from "../../components/contentlayout/ContentLayout";
 
 const CssPage = () => {
   return (<>
-    <Head>
-      <title>CSS | Dev Web Tool</title>
-    </Head>
     <ContentLayout back='/' name='CSS Generator' browser={null} />
     {data[0].children.map(item1 => (
       <div key={item1.key}>
@@ -28,6 +25,14 @@ const CssPage = () => {
       </div>
     ))}
   </>);
+}
+
+export const getServerSideProps = async () => {
+  return {
+    props: {
+      meta_title: 'CSS'
+    }
+  }
 }
 
 export default CssPage;

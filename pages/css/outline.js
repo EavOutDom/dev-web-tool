@@ -5,6 +5,14 @@ import ColorPicker from "../../components/colorPicker/ColorPicker";
 import { FaCopy } from "react-icons/fa";
 import { useCopy } from "../../lib/useCopy";
 
+export const getServerSideProps = () => {
+  return {
+    props: {
+      meta_title: 'Outline'
+    }
+  }
+};
+
 const Outline = () => {
   const ref = useRef();
   const [copy, setCopy] = useCopy('');

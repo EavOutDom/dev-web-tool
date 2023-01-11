@@ -5,6 +5,14 @@ import { FaCopy } from "react-icons/fa";
 import { useCopy } from "../../lib/useCopy";
 import ColorPicker from "../../components/colorPicker/ColorPicker";
 
+export const getServerSideProps = () => {
+  return {
+    props: {
+      meta_title: 'Text Decoration'
+    }
+  }
+};
+
 const TextDecoration = () => {
   const [state, setState] = useState({
     line: 'underline',

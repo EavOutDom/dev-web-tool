@@ -6,6 +6,14 @@ import { useState } from "react";
 import { FaCopy } from 'react-icons/fa';
 import { useCopy } from '../../lib/useCopy';
 
+export const getServerSideProps = async () => {
+  return {
+    props: {
+      meta_title: 'Background Gradient'
+    }
+  }
+};
+
 const BackgroundGradient = () => {
   const [color, setColor] = useState('linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%)');
   const [copy, setCopy] = useCopy();

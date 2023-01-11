@@ -5,6 +5,14 @@ import { useRef, useState } from "react";
 import { FaCopy } from "react-icons/fa";
 import { useCopy } from "../../lib/useCopy";
 
+export const getServerSideProps = async () => {
+  return {
+    props: {
+      meta_title: 'Background Image'
+    }
+  }
+};
+
 const BackgroundImage = () => {
   const [state, setState] = useState({
     background_color: '#000000',

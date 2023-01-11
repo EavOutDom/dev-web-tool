@@ -4,6 +4,14 @@ import { useRef, useState } from "react";
 import { useCopy } from "../../lib/useCopy";
 import { FaCopy } from "react-icons/fa";
 
+export const getServerSideProps = () => {
+  return {
+    props: {
+      meta_title: 'Text Transform'
+    }
+  }
+};
+
 const TextTransform = () => {
   const [value, setValue] = useState('capitalize');
   const [copy, setCopy] = useCopy('');

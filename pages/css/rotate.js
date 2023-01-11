@@ -4,6 +4,14 @@ import { useRef, useState } from "react";
 import { FaCopy } from "react-icons/fa";
 import { useCopy } from "../../lib/useCopy";
 
+export const getServerSideProps = () => {
+  return {
+    props: {
+      meta_title: 'Rotate'
+    }
+  }
+};
+
 const Rotate = () => {
   const [type, setType] = useState(2);
   const [angle, setAngle] = useState(0);
