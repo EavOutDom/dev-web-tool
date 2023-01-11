@@ -9,7 +9,7 @@ import data from "../../data/data";
 import { AppContext } from "../../store/AppContext";
 
 const LayoutContainer = ({ children, pageNotFound = false }) => {
-  const { darkAlgorithm, defaultAlgorithm } = theme
+  // const { darkAlgorithm, defaultAlgorithm } = theme
   const { appState: { dark }, appDispatch } = useContext(AppContext);
 
   const router = useRouter();
@@ -26,7 +26,7 @@ const LayoutContainer = ({ children, pageNotFound = false }) => {
   });
 
   return (
-    <ConfigProvider theme={{ algorithm: dark ? darkAlgorithm : defaultAlgorithm }}>
+    // <ConfigProvider theme={{ algorithm: dark ? darkAlgorithm : defaultAlgorithm }}>
       <Layout style={{ minHeight: '100vh' }} hasSider>
 
         {/* drawer for mobile  */}
@@ -131,7 +131,9 @@ const LayoutContainer = ({ children, pageNotFound = false }) => {
             </p>
           </Layout.Footer>
         </Layout>
-      </Layout></ConfigProvider>);
+      </Layout>
+      // </ConfigProvider>
+      );
 }
 
 const MenuLayout = (props) => {

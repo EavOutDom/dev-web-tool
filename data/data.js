@@ -258,12 +258,74 @@ const data = [
     label: 'HTML',
     key: 'html',
     children: [{
-      label: 'Item1',
-      key: 'item1',
-      children: [{
-        label: 'Test 1',
-        key: 'test-1'
-      }],
+      label: 'Input',
+      key: 'input',
+      children: [
+        {
+          label: 'Button',
+          key: 'button'
+        },
+        {
+          label: 'Checkbox & Radio Button',
+          key: 'checkbox-radio'
+        },
+        {
+          label: 'Color Input',
+          key: 'color-input'
+        },
+        {
+          label: 'Date & Time Input',
+          key: 'date-time'
+        },
+        {
+          label: 'Email Input',
+          key: 'email-input'
+        },
+        {
+          label: 'File Input',
+          key: 'file-input'
+        },
+        {
+          label: 'Image Button',
+          key: 'image-button'
+        },
+        {
+          label: 'Number Input',
+          key: 'number-input'
+        },
+        {
+          label: 'Password Input',
+          key: 'password-input'
+        },
+        {
+          label: 'Range Input (Slider)',
+          key: 'range-input'
+        },
+        {
+          label: 'Search Input',
+          key: 'search-input'
+        },
+        {
+          label: 'Submit',
+          key: 'submit'
+        },
+        {
+          label: 'Telephone Input',
+          key: 'telephone-input'
+        },
+        {
+          label: 'Text Input',
+          key: 'text-input'
+        },
+        {
+          label: 'Textarea',
+          key: 'textarea'
+        },
+        {
+          label: 'URL Input',
+          key: 'url-input'
+        }
+      ],
       type: 'group'
     }]
   }
