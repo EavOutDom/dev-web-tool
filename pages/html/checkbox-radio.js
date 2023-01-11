@@ -64,8 +64,8 @@ const CheckboxRadio = () => {
             <div className="justify-between items-center">
               <pre>
                 <code ref={ref}>
-                  {`<label htmlFor="input">
-  <input type="${type}" name="${name}" id="input"${isChecked ? ' checked' : ''}/> Click me!
+                  {`<label>
+  <input type="${type}" name="${name}"${isChecked ? ' checked' : ''}/> Click me!
 </label>`}
                 </code>
               </pre>
