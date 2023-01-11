@@ -3,6 +3,7 @@ import ContentLayout from "../../components/contentlayout/ContentLayout";
 import { useRef, useState } from "react";
 import { FaCopy } from "react-icons/fa";
 import { useCopy } from "../../lib/useCopy";
+import moment, { months } from "moment/moment";
 
 export const getServerSideProps = () => {
   return {
@@ -12,22 +13,51 @@ export const getServerSideProps = () => {
   }
 };
 
-const ButtonInput = () => {
-  const [type, setType] = useState('button');
-  const [name, setName] = useState('myButton');
-  const [focus, setFocus] = useState(false);
-  const [disabled, setDisabled] = useState(false);
+const DateTime = () => {
+  let date = new Date();
+  let currentDate = date.toJSON().slice(0, 10);
+  let currentTime = date.getHours() + ':' + date.getMinutes();
+  let startDate = new Date(date.getFullYear(), 0, 1);
+  let days = Math.floor((date - startDate) / (24 * 60 * 60 * 1000));
+  let currentWeek = date.getFullYear() + "-W" + ('0' + Math.ceil(days / 7)).slice(-2);
+  let currentMonth = date.getFullYear() + '-' + ('0' + moment(moment(), 'YYYY/MM/DD').format('M')).slice(-2);
+  let currentDateLocal = moment().toISOString().slice(0, -8);
+
+  const [state, setState] = useState({
+    type: 'date',
+    default: currentDate,
+    name: 'myDate'
+  })
   const [copy, setCopy] = useCopy('');
   const ref = useRef();
+
+  const handleChangeType = (e) => {
+    setState(p => ({ ...p, type: e }));
+    switch (e) {
+      case 'time':
+        setState(p => ({ ...p, default: currentTime }));
+        break;
+      case 'date':
+        setState(p => ({ ...p, default: currentDate }));
+        break;
+      case 'datetime-local':
+        setState(p => ({ ...p, default: currentDateLocal }));
+        break;
+      case 'week':
+        setState(p => ({ ...p, default: currentWeek }));
+        break;
+      case 'month':
+        setState(p => ({ ...p, default: currentMonth }));
+        break;
+    }
+
+  };
 
   return (<section>
     <ContentLayout back="/html" name='Date & Time Input'>
       <ContentLayout.Paragraph>
         <p>
-          {`<input> elements of type="date" create input fields that let the user enter a date, either with a textbox that validates the input or a special date picker interface.`}
-        </p>
-        <p>
-          {`The resulting value includes the year, month, and day, but not the time. The time and datetime-local input types support time and date+time input.`}
+          {``}
         </p>
       </ContentLayout.Paragraph>
       <ContentLayout.Options>
@@ -35,20 +65,16 @@ const ButtonInput = () => {
           <p className="content_title">Option</p>
           <Card>
             <label htmlFor="type">Type</label>
-            <Select style={{ width: '100%' }} id="type" value={type} onChange={setType}>
-              <Select.Option value='button'>button</Select.Option>
-              <Select.Option value='reset'>reset</Select.Option>
-              <Select.Option value='submit'>submit</Select.Option>
+            <Select style={{ width: '100%' }} id="type" value={state.type} onChange={handleChangeType}>
+              <Select.Option value='time'>time</Select.Option>
+              <Select.Option value='date'>date</Select.Option>
+              <Select.Option value='datetime-local'>datetime-local</Select.Option>
+              <Select.Option value='week'>week</Select.Option>
+              <Select.Option value='month'>month</Select.Option>
             </Select>
             <Divider dashed />
             <label htmlFor="name">Name</label>
-            <Input id="name" value={name} onChange={e => setName(e.target.value)} />
-            <Divider dashed />
-            <label htmlFor="focus" style={{ display: 'block' }}>autoFocus</label>
-            <Checkbox id="focus" onChange={e => setFocus(e.target.checked)} />
-            <Divider dashed />
-            <label htmlFor="disabled" style={{ display: 'block' }}>Disabled</label>
-            <Checkbox id="disabled" onChange={e => setDisabled(e.target.checked)} />
+            <Input id="value" value={state.name} onChange={e => setState(p => ({ ...p, name: e.target.value }))} />
           </Card>
         </div>
       </ContentLayout.Options>
@@ -57,12 +83,7 @@ const ButtonInput = () => {
           <p className="content_title">Preview</p>
           <Card>
             <div style={{ minHeight: 200 }}>
-              <button
-                disabled={disabled}
-                autoFocus={focus}
-                type={type}
-                name={name}
-              >Click me!</button>
+              <input type={state.type} name={state.name} value={state.default} onChange={e => setState(p => ({ ...p, default: e.target.value }))} />
             </div>
           </Card>
         </div>
@@ -70,13 +91,9 @@ const ButtonInput = () => {
           <p className="content_title">Code</p>
           <Card>
             <div className="justify-between items-center">
-              <pre>
-                <code ref={ref}>
-                  {`<button type="${type}" name="${name}"${focus ? " autoFocus" : ''}${disabled ? " disabled" : ''}>
-  Click me!
-</button>`}
-                </code>
-              </pre>
+              <code ref={ref}>
+                {`<input type="${state.type}" name="${state.name}" value="${state.default}"/>`}
+              </code>
               <Button onClick={() => setCopy(ref)} icon={<FaCopy />} />
             </div>
           </Card>
@@ -86,4 +103,4 @@ const ButtonInput = () => {
   </section>);
 }
 
-export default ButtonInput;
+export default DateTime;
