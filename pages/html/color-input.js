@@ -14,7 +14,7 @@ export const getServerSideProps = () => {
 
 const ColorInput = () => {
   const [name, setName] = useState('myColor');
-  const [color, setColor] = useState('#000');
+  const [color, setColor] = useState('#000000');
   const [copy, setCopy] = useCopy('');
   const ref = useRef();
 
