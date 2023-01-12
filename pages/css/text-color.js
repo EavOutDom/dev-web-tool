@@ -41,7 +41,7 @@ const TextColor = () => {
         <div>
           <p className="content_title">Preview</p>
           <Card>
-            <div style={{ color: color }}>
+            <div style={{ color: color, minHeight: 200 }}>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime consequatur sed, repudiandae, libero itaque officia tenetur hic voluptate cumque enim porro deserunt eum et amet rerum? Iure iste sit vel!
             </div>
           </Card>
