@@ -62,9 +62,11 @@ const DateTime = () => {
   return (<section>
     <ContentLayout back="/html" name='Date & Time Input'>
       <ContentLayout.Paragraph>
-        <p>
-          {state.paragraph}
-        </p>
+        <div>
+          <p>
+            {state.paragraph}
+          </p>
+        </div>
       </ContentLayout.Paragraph>
       <ContentLayout.Options>
         <div>
