@@ -16,7 +16,7 @@ export const getServerSideProps = () => {
 const DateTime = () => {
   let date = new Date();
   let currentDate = date.toJSON().slice(0, 10);
-  let currentTime = date.getHours() + ':' + date.getMinutes();
+  let currentTime = ('0' + date.getHours()).slice(-2) + ':' + date.getMinutes();
   let startDate = new Date(date.getFullYear(), 0, 1);
   let days = Math.floor((date - startDate) / (24 * 60 * 60 * 1000));
   let currentWeek = date.getFullYear() + "-W" + ('0' + Math.ceil(days / 7)).slice(-2);
@@ -24,8 +24,8 @@ const DateTime = () => {
   let currentDateLocal = moment().toISOString().slice(0, -8);
 
   const [state, setState] = useState({
-    type: 'date',
-    default: currentDate,
+    type: 'time',
+    default: currentTime,
     name: 'myDate'
   })
   const [copy, setCopy] = useCopy('');
