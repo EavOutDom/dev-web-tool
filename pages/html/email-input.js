@@ -1,7 +1,16 @@
 import { useRef, useState } from "react";
 import { useCopy } from "../../lib/useCopy";
 import ContentLayout from "../../components/contentlayout/ContentLayout";
-import { Card, Checkbox, Divider, Input } from "antd";
+import { Button, Card, Checkbox, Divider, Input } from "antd";
+import { FaCopy } from "react-icons/fa";
+
+export const getServerSideProps = async () => {
+  return {
+    props: {
+      meta_title: 'Email Input'
+    }
+  }
+};
 
 const EmailInput = () => {
   const [name, setName] = useState('myEmail');
@@ -69,6 +78,7 @@ const EmailInput = () => {
                   {`<input type="email" name="${name}"${placeholder ? ` placeholder="${placeholder}"` : ""}${size ? ` size="${size}"` : ""}${checked.required ? ' required' : ''}${checked.readonly ? ' readonly' : ''}${checked.multiple ? ' multiple' : ''}/>`}
                 </code>
               </pre>
+              <Button onClick={() => setCopy(ref)} icon={<FaCopy />} />
             </div>
           </Card>
         </div>
