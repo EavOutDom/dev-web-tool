@@ -171,3 +171,7 @@ pre {
   height: 12px !important;
   border-radius: 12px !important;
 }
+
+.preview > div:first-child {
+  min-height: 200px;
+}
