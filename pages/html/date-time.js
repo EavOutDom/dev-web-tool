@@ -75,6 +75,9 @@ const DateTime = () => {
             <Divider dashed />
             <label htmlFor="name">Name</label>
             <Input id="value" value={state.name} onChange={e => setState(p => ({ ...p, name: e.target.value }))} />
+            <Divider dashed />
+            <label htmlFor="default">Default Value</label>
+            <Input id="default" value={state.default} readOnly />
           </Card>
         </div>
       </ContentLayout.Options>
