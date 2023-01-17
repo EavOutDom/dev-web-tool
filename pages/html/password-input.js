@@ -43,10 +43,10 @@ const PasswordInput = () => {
             <label htmlFor="placeholder">Placeholder</label>
             <Input id="placeholder" value={placeholder} onChange={e => setPlaceholder(e.target.value)} />
             <Divider dashed />
-            <label htmlFor="min">minlength</label>
+            <label htmlFor="min">Minlength</label>
             <Input id="min" type="number" value={min} onChange={e => setMin(e.target.value)} />
             <Divider dashed />
-            <label htmlFor="max">maxlength</label>
+            <label htmlFor="max">Maxlength</label>
             <Input id="max" type="number" value={max} onChange={e => setMax(e.target.value)} />
           </Card>
         </div>
