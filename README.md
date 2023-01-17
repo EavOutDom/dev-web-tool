@@ -16,9 +16,7 @@ Run development server:
   npm start dev
 ```
 
-Open [http://localhost:8081](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+Open [http://localhost:8081](http://localhost:8081) with your browser to see the result.
 
 ## License
 
