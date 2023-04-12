@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import LayoutContainer from '../components/layout/Layout'
 import Loader from '../components/loader/Loader'
-import AppContextProvider from '../store/AppContext'
+import AppContextProvider from '../context/AppContext'
 import '../styles/globals.css'
 
 function MyApp({ Component, pageProps }) {

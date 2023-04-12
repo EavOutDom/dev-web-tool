@@ -1,7 +1,7 @@
 import { Spin } from "antd";
-import Router, { useRouter } from "next/router";
-import { useContext, useEffect, useState } from "react";
-import { AppContext } from "../../store/AppContext";
+import Router from "next/router";
+import { useContext, useEffect } from "react";
+import { AppContext } from '../../context/AppContext';
 
 const Loader = ({ children }) => {
   const { appState: { loading, dark }, appDispatch } = useContext(AppContext);

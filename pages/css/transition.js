@@ -5,7 +5,7 @@ import { FaCopy } from "react-icons/fa";
 import { useCopy } from "../../lib/useCopy";
 import ColorPicker from "../../components/colorPicker/ColorPicker";
 import timingFunction from "../../data/timingFunction";
-import { AppContext } from "../../store/AppContext";
+import { AppContext } from "../../context/AppContext";
 
 export const getServerSideProps = () => {
   return {
