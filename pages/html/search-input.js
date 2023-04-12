@@ -56,7 +56,7 @@ const SearchInput = () => {
           <Card>
             <div className="justify-between items-center">
               <code ref={ref}>
-                {`<input type="password" name="${name}"${placeholder ? ` placeholder="${placeholder}"` : ''} ${spellcheck ? 'spellcheck' : ''}/>`}
+                {`<input type="search" name="${name}"${placeholder ? ` placeholder="${placeholder}"` : ''} ${spellcheck ? 'spellcheck' : ''}/>`}
               </code>
               <Button onClick={() => setCopy(ref)} icon={<FaCopy />} />
             </div>
