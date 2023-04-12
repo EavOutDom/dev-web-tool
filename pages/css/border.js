@@ -1,5 +1,5 @@
 import { Button, Card, Divider, Select, Slider, Tooltip } from "antd";
-import ContentLayout from "../../components/contentLayout/ContentLayout";
+import ContentLayout from "../../components/contentlayout/ContentLayout";
 import { useRef, useState } from "react";
 import ColorPicker from "../../components/colorPicker/ColorPicker";
 import { FaCopy } from "react-icons/fa";

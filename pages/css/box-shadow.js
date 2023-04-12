@@ -1,5 +1,5 @@
 import { Button, Card, Col, Collapse, Divider, Row, Select, Slider } from "antd";
-import ContentLayout from "../../components/contentLayout/ContentLayout";
+import ContentLayout from "../../components/contentlayout/ContentLayout";
 import { useRef, useState } from "react";
 import { AiFillDelete } from 'react-icons/ai';
 import ColorPicker from "../../components/colorPicker/ColorPicker";
