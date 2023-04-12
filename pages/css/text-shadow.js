@@ -78,22 +78,6 @@ const TextShadow = () => {
         </div>
       </ContentLayout.Preview>
     </ContentLayout>
-    {/* <div align='middle'>
-      <h1>Beautiful CSS box-shadow examples</h1>
-      <Row gutter={[24, 96]}>
-        {boxShadowEx.map((data, index) => <Col xs={24} md={12} lg={8} xl={6} key={index}>
-          <div
-            onClick={() => setCopyExam(data)}
-            style={{
-              boxShadow: data.slice(12, -1),
-            }}
-            className={styles.box_shadow}
-          >
-            {index + 1}
-          </div>
-        </Col>)}
-      </Row>
-    </div> */}
   </section>);
 };
 
