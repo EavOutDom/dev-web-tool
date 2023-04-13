@@ -70,11 +70,11 @@ const Rotate = () => {
             <div
               align='middle'
               style={{
-                height: 200,
+                height: "auto",
               }}
             >
               <div style={{
-                height: 200,
+                height: "auto",
                 width: 200,
                 background: '#a0a0a0',
                 textAlign: 'center',
